@@ -13,7 +13,6 @@ import {
   TimerReset,
   Users,
   Video,
-  Youtube,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import FloMark from "../components/FloMark.jsx";
@@ -87,7 +86,7 @@ export default function HomePage() {
             </p>
             <div className="creator-socials">
               <a href={SITE.twitch} target="_blank" rel="noreferrer"><Radio size={15} /> TWITCH</a>
-              <a href={SITE.youtube} target="_blank" rel="noreferrer"><Youtube size={15} /> YOUTUBE</a>
+              <a href={SITE.youtube} target="_blank" rel="noreferrer"><Play size={15} /> YOUTUBE</a>
               <a href={SITE.tiktok} target="_blank" rel="noreferrer"><Video size={15} /> TIKTOK</a>
               <a href={SITE.discord} target="_blank" rel="noreferrer"><MessageCircle size={15} /> DISCORD</a>
             </div>
