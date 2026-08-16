@@ -27,9 +27,9 @@ export default function RanksPage() {
     <main className="page-main ranks-page">
       <section className="section ranks-hero">
         <div className="shell">
-          <div className="section-label">RANKS & PERKS // FLOTTY'S WORLD 2.0</div>
+          <div className="section-label">RANKS & PERKS // {SITE.serverName}</div>
           <h1 className="display-title">HOW FINE<br />ARE YOU?</h1>
-          <p className="ranks-hero-copy">Community identity first. Useful convenience second. Survival power never.</p>
+          <p className="ranks-hero-copy">A shared core game for everyone, earned community identity for regulars, and supporter perks that never become survival power.</p>
           <div className="hero-actions">
             <a className="btn btn-solid" href={SITE.twitch} target="_blank" rel="noreferrer"><Crown size={16} /> SUPPORT FLOTT ON TWITCH</a>
             <a className="btn" href={SITE.discord} target="_blank" rel="noreferrer">JOIN DISCORD <ExternalLink size={14} /></a>
@@ -52,17 +52,24 @@ export default function RanksPage() {
           <div className="rank-split">
             <div>
               <h2>MORE ROOM TO PROTECT.<br />NOT MORE POWER TO WIN.</h2>
-              <p>Everyone begins with {SITE.claimBlocks.starting.toLocaleString()} claim blocks and earns +{SITE.claimBlocks.perHour} per active hour. Rank bonuses stack through the supporter ladder, so higher tiers inherit the lower-tier claim bonuses.</p>
+              <p>Everyone begins with {SITE.claimBlocks.starting.toLocaleString()} claim blocks and earns +{SITE.claimBlocks.perHour} per active hour. Rank bonuses stack through the ladder, so higher tiers inherit the lower-tier claim bonuses.</p>
             </div>
-            <div className="claim-rank-table">
-              <div className="claim-rank-row claim-rank-head"><span>RANK</span><span>RANK BONUS</span><span>WITH STARTING BLOCKS</span></div>
-              {supporterRanks.map((rank) => (
-                <div className="claim-rank-row" key={rank.key}>
-                  <strong>{rank.name}</strong>
-                  <span>{rank.totalBonus ? `+${rank.totalBonus.toLocaleString()}` : "—"}</span>
-                  <span>{(SITE.claimBlocks.starting + rank.totalBonus).toLocaleString()}</span>
-                </div>
-              ))}
+            <div className="claim-rank-table-wrap">
+              <table className="claim-rank-table">
+                <caption className="sr-only">Claim block bonuses by rank</caption>
+                <thead>
+                  <tr><th scope="col">Rank</th><th scope="col">Rank bonus</th><th scope="col">With starting blocks</th></tr>
+                </thead>
+                <tbody>
+                  {supporterRanks.map((rank) => (
+                    <tr key={rank.key}>
+                      <th scope="row" data-label="Rank">{rank.name}</th>
+                      <td data-label="Rank bonus">{rank.totalBonus ? `+${rank.totalBonus.toLocaleString()}` : "—"}</td>
+                      <td data-label="With starting blocks">{(SITE.claimBlocks.starting + rank.totalBonus).toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -73,7 +80,7 @@ export default function RanksPage() {
           <div>
             <div className="section-label">03 // THE LINE WE DON'T CROSS</div>
             <h2>NO PAY-TO-WIN.</h2>
-            <p>Fine, Finer, and Finest are meant to feel rewarding without turning a Twitch subscription into an advantage over somebody who just wants to play Minecraft.</p>
+            <p>FINE, FINER, and FINEST are thank-you perks for Twitch supporters. A subscription should make your identity and convenience feel better, not make you stronger than somebody playing for free.</p>
           </div>
           <div className="no-power-grid">
             {["No /fly", "No /god", "No /heal or /feed", "No kits", "No free diamonds or gear", "No XP multipliers", "No better drops", "No creative tools", "No staff commands"].map((item) => (
@@ -89,7 +96,7 @@ export default function RanksPage() {
           <div className="rank-split">
             <div>
               <h2>STAFF IS A JOB.<br />NOT A SUPPORTER TIER.</h2>
-              <p>Staff ranks are assigned according to Minecraft responsibilities. A person can hold a different role on Discord, and supporter ranks can coexist with staff without changing staff authority.</p>
+              <p>Staff ranks follow Minecraft responsibilities. Discord roles can be different, and supporter ranks can coexist with staff without changing staff authority.</p>
             </div>
             <div className="staff-rank-stack">
               {staffRanks.map(([name, description], index) => (
