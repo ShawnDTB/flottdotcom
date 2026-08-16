@@ -80,19 +80,19 @@ function Header() {
     };
   }, [open]);
 
-  if (isHome) return null;
-
   const close = () => setOpen(false);
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${isHome ? "site-header-home" : ""}`}>
       <div className="shell header-inner">
         <Link to="/" className="brand-link" onClick={close} aria-label={`${SITE.brandName} home`}>
           <FloMark compact />
-          <span className="brand-copy">
-            <strong>{SITE.brandName}</strong>
-            <small>{SITE.serverName} // creator + community</small>
-          </span>
+          {!isHome && (
+            <span className="brand-copy">
+              <strong>{SITE.brandName}</strong>
+              <small>{SITE.serverName} // creator + community</small>
+            </span>
+          )}
         </Link>
 
         <button
