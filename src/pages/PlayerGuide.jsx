@@ -1,0 +1,174 @@
+import {
+  AlertTriangle,
+  Check,
+  Home,
+  Link as LinkIcon,
+  MapPinned,
+  MessageSquareText,
+  ShieldCheck,
+  Shovel,
+  Users,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { SITE, staffRanks } from "../site.js";
+import "./PlayerGuide.css";
+
+const quickStart = [
+  ["01", "JOIN", `Add ${SITE.serverIp} in Multiplayer.`],
+  ["02", "SET HOME", "Use /sethome once you find your base. Everyone gets one home."],
+  ["03", "CLAIM", "Protect bases, storage, farms, and builds with GriefPrevention."],
+  ["04", "LINK", "Use /discord link if you want DiscordSRV to connect your Minecraft and Discord identities."],
+];
+
+const commandGroups = [
+  {
+    title: "HOME & TRAVEL",
+    commands: [
+      ["/sethome", "Set your one home."],
+      ["/home", "Return to your home."],
+      ["/delhome", "Remove your current home."],
+      ["/tpa <player>", "Request to teleport to another player."],
+      ["/tpahere <player>", "Ask another player to teleport to you."],
+      ["/tpaccept", "Accept a teleport request."],
+      ["/tpdeny", "Decline a teleport request."],
+      ["/warp", "View and use public server warps."],
+    ],
+  },
+  {
+    title: "COMMUNITY",
+    commands: [
+      ["/msg <player> <message>", "Send a private message."],
+      ["/reply <message>", "Reply to your most recent private message."],
+      ["/ignore <player>", "Ignore another player."],
+      ["/discord", "View the server Discord information."],
+      ["/discord link", "Link your Minecraft account to Discord."],
+    ],
+  },
+  {
+    title: "CLAIMS",
+    commands: [
+      ["Golden Shovel", "Right-click opposite corners to create or resize a claim."],
+      ["/claimslist", "See your claim-block balance and claims."],
+      ["/trust <player>", "Allow a player to build in your claim."],
+      ["/containertrust <player>", "Allow container access without full build trust."],
+      ["/accesstrust <player>", "Allow basic interaction access."],
+      ["/untrust <player>", "Remove trust from a claim."],
+      ["/abandonclaim", "Delete the claim you are standing in."],
+    ],
+  },
+];
+
+export default function PlayerGuidePage() {
+  return (
+    <main className="page-main guide-page">
+      <section className="section guide-hero">
+        <div className="shell">
+          <div className="section-label">PLAYER GUIDE // FLOTTY'S WORLD 2.0</div>
+          <h1 className="display-title">GET IN.<br />GET SET.<br />DON'T GET GRIEFED.</h1>
+          <p className="guide-hero-copy">Everything a normal player should need without dumping a plugin manual on you.</p>
+          <div className="hero-actions">
+            <a className="btn btn-solid" href={SITE.discord} target="_blank" rel="noreferrer"><MessageSquareText size={16} /> JOIN DISCORD</a>
+            <Link className="btn" to="/map"><MapPinned size={16} /> WORLD MAP</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-tight">
+        <div className="shell">
+          <div className="section-label">01 // QUICK START</div>
+          <div className="guide-start-grid">
+            {quickStart.map(([number, title, text]) => (
+              <article className="guide-step" key={title}>
+                <span>{number}</span>
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section claims-section">
+        <div className="shell">
+          <div className="section-label">02 // CLAIM YOUR STUFF</div>
+          <div className="guide-two-column">
+            <div>
+              <h2>YOUR BUILD SHOULD STAY YOUR BUILD.</h2>
+              <p>Flotty's World uses GriefPrevention. Hold a golden shovel, right-click one corner of the area you want, then the opposite corner. Expand it later as you earn more claim blocks.</p>
+              <div className="claim-flow">
+                <div><Shovel /><strong>START WITH {SITE.claimBlocks.starting.toLocaleString()}</strong><span>Enough for a reasonable first protected area.</span></div>
+                <div><ShieldCheck /><strong>+{SITE.claimBlocks.perHour} / ACTIVE HOUR</strong><span>Playing the server keeps expanding what you can protect.</span></div>
+                <div><Users /><strong>TRUST INTENTIONALLY</strong><span>Use the right trust level instead of handing everyone full build access.</span></div>
+              </div>
+            </div>
+            <aside className="guide-note">
+              <div className="section-label">IMPORTANT</div>
+              <p>Supporter ranks can add claim-block capacity, and optional claim-block packs may be available later. None of that gives combat, loot, or progression advantages.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell">
+          <div className="section-label">03 // COMMANDS YOU'LL ACTUALLY USE</div>
+          <div className="command-group-grid">
+            {commandGroups.map((group) => (
+              <article className="command-group" key={group.title}>
+                <h3>{group.title}</h3>
+                <div className="command-list">
+                  {group.commands.map(([command, description]) => (
+                    <div className="command-row" key={command}>
+                      <code>{command}</code>
+                      <span>{description}</span>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section vanilla-section">
+        <div className="shell guide-two-column">
+          <div>
+            <div className="section-label">04 // WHAT VANILLA-FIRST MEANS</div>
+            <h2>CONVENIENCE IS FINE.<br />POWER ISN'T FOR SALE.</h2>
+            <p>Homes, TPA, public warps, claims, cosmetic identities, and supporter utility are here to make community survival smoother. The actual Minecraft progression stays Minecraft.</p>
+          </div>
+          <div className="promise-list">
+            {["No paid fly", "No kits or free gear", "No heal/feed/god mode", "No paid damage or drop bonuses", "No creative tools for supporters", "No staff commands sold as perks"].map((item) => (
+              <div key={item}><Check size={15} /><span>{item}</span></div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell">
+          <div className="section-label">05 // STAFF IS SEPARATE</div>
+          <div className="guide-two-column">
+            <div>
+              <h2>DISCORD AUTHORITY ≠ MINECRAFT AUTHORITY.</h2>
+              <p>Some people help moderate Discord without holding the same Minecraft role. Staff access is assigned for the job someone actually performs on the server, while supporter ranks can exist alongside staff.</p>
+            </div>
+            <div className="staff-list">
+              {staffRanks.map(([name, description]) => (
+                <div key={name}><strong>{name}</strong><span>{description}</span></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-tight">
+        <div className="shell guide-bottom-cta">
+          <AlertTriangle />
+          <div><strong>Something not syncing?</strong><p>Link with <code>/discord link</code> first. If a role or account still looks wrong, ask staff instead of repeatedly unlinking accounts.</p></div>
+          <a className="btn" href={SITE.discord} target="_blank" rel="noreferrer"><LinkIcon size={15} /> GET HELP</a>
+        </div>
+      </section>
+    </main>
+  );
+}
