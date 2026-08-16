@@ -8,7 +8,7 @@ export default function NotFoundPage() {
       <section className="section">
         <div className="shell not-found-inner">
           <div className="section-label">404 // SIGNAL LOST</div>
-          <h1 className="display-title">WRONG<br />CHANNEL.</h1>
+          <h1 className="display-title">WRONG CHANNEL.</h1>
           <p>
             That page is not part of {SITE.brandName}. Head back home or jump straight into the {SITE.serverName} player guide.
           </p>
