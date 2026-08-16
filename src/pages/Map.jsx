@@ -63,7 +63,7 @@ export default function MapPage() {
               <Server size={34} />
               <div>
                 <strong>THE MAP IS LIVE, BUT THIS PAGE CAN'T FRAME IT YET.</strong>
-                <p>The temporary BlueMap address uses HTTP. Browsers block an HTTP iframe when this website is served over HTTPS. Open the map directly for now; once BlueMap gets an HTTPS domain, the embed will begin working automatically.</p>
+                <p>The temporary BlueMap address uses HTTP. Browsers block an HTTP iframe when this website is served over HTTPS. Open the map directly for now; once BlueMap gets an HTTPS domain, this embed will begin working automatically.</p>
               </div>
               <a className="btn btn-solid" href={SITE.mapUrl} target="_blank" rel="noreferrer">
                 OPEN LIVE MAP <ExternalLink size={14} />
@@ -91,16 +91,6 @@ export default function MapPage() {
           <div><span>01</span><strong>FIND BUILDS</strong><p>See where the community is building and get your bearings without replacing survival travel.</p></div>
           <div><span>02</span><strong>PLAN TRAVEL</strong><p>Coordinate roads, Nether routes, community areas, and long-distance projects.</p></div>
           <div><span>03</span><strong>WATCH IT GROW</strong><p>The map becomes a visual history of what the community actually builds over time.</p></div>
-        </div>
-      </section>
-
-      <section className="section map-about-section">
-        <div className="shell map-about-grid">
-          <div>
-            <div className="section-label">ABOUT // BLUE MAP</div>
-            <h2>THE WORLD, AS IT EXISTS.</h2>
-          </div>
-          <p>What you see here comes from the same vanilla-first survival world everyone plays in. BlueMap makes it easier to understand the scale of the server without adding teleportation or progression shortcuts to the game itself.</p>
         </div>
       </section>
     </main>
