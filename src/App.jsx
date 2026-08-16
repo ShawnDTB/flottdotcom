@@ -31,6 +31,7 @@ const ROUTE_META = {
 };
 
 const TICKER_ITEMS = ["[FLO]", SITE.brandName, SITE.serverName, SITE.serverIp, "VANILLA-FIRST", "NO PAY-TO-WIN"];
+const TICKER_CYCLES = 8;
 
 function RouteEffects() {
   const location = useLocation();
@@ -148,7 +149,11 @@ function Footer() {
 function TickerGroup() {
   return (
     <div className="ticker-group">
-      {TICKER_ITEMS.map((item) => <span key={item}>{item}</span>)}
+      {Array.from({ length: TICKER_CYCLES }, (_, cycle) => (
+        TICKER_ITEMS.map((item, itemIndex) => (
+          <span key={`${cycle}-${itemIndex}`}>{item}</span>
+        ))
+      ))}
     </div>
   );
 }
