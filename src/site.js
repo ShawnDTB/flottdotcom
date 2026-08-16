@@ -1,15 +1,14 @@
 export const SITE = {
+  brandName: "FLOTTDOTCOM",
   creator: "Flott",
   handle: "flottdotcom",
   aliases: ["Flotto", "itsflott", "flott", "flottdotcom"],
   serverName: "Flotty's World 2.0",
-  serverIp: "74.112.77.32:25565",
+  serverIp: import.meta.env.VITE_SERVER_IP || "74.112.77.32:25565",
   discord: "https://discord.gg/yJBHueFU6x",
   twitch: "https://www.twitch.tv/flottdotcom",
-  youtube:
-    import.meta.env.VITE_YOUTUBE_URL || "https://www.youtube.com/@flottdotcom",
-  tiktok:
-    import.meta.env.VITE_TIKTOK_URL || "https://www.tiktok.com/@flottdotcom",
+  youtube: import.meta.env.VITE_YOUTUBE_URL || "",
+  tiktok: import.meta.env.VITE_TIKTOK_URL || "",
   mapUrl: import.meta.env.VITE_MAP_URL || "",
   claimBlocks: {
     starting: 1000,
@@ -18,18 +17,25 @@ export const SITE = {
   },
 };
 
+export const creatorSocials = [
+  { key: "twitch", label: "Twitch", href: SITE.twitch },
+  { key: "youtube", label: "YouTube", href: SITE.youtube },
+  { key: "tiktok", label: "TikTok", href: SITE.tiktok },
+  { key: "discord", label: "Discord", href: SITE.discord },
+].filter((social) => Boolean(social.href));
+
 export const supporterRanks = [
   {
     key: "default",
     name: "[FLO]",
-    label: "Default Player",
+    label: "Core Player",
     accent: "mono",
     bonus: 0,
     totalBonus: 0,
     perks: [
       "1 home",
-      "TPA requests and accepts",
-      "Public warps",
+      "TPA requests and responses",
+      "Use public server warps",
       "Land claims",
       "1,000 starting claim blocks",
       "+150 claim blocks per active hour",
@@ -48,7 +54,7 @@ export const supporterRanks = [
       "/afk",
       "/me",
       "+1,000 rank claim-block bonus",
-      "Community recognition",
+      "Earned community recognition",
     ],
   },
   {
