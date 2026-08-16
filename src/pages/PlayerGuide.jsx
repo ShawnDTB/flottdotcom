@@ -1,9 +1,12 @@
 import {
   AlertTriangle,
   Check,
+  ExternalLink,
+  Gamepad2,
   Link as LinkIcon,
   MapPinned,
   MessageSquareText,
+  Server,
   ShieldCheck,
   Shovel,
   Users,
@@ -13,7 +16,7 @@ import { SITE, staffRanks } from "../site.js";
 import "./PlayerGuide.css";
 
 const quickStart = [
-  ["01", "JOIN", `Add ${SITE.serverIp} in Multiplayer.`],
+  ["01", "JOIN", "Choose Java or Bedrock below and connect to the same world."],
   ["02", "SET HOME", "Use /sethome once you find your base. Everyone gets one home."],
   ["03", "CLAIM", "Protect bases, storage, farms, and builds with GriefPrevention."],
   ["04", "LINK", "Use /discord link when you want your Minecraft account connected to your Discord account."],
@@ -62,9 +65,9 @@ export default function PlayerGuidePage() {
     <main className="page-main guide-page">
       <section className="section guide-hero">
         <div className="shell">
-          <div className="section-label">PLAYER GUIDE // {SITE.serverName}</div>
-          <h1 className="display-title">GET IN.<br />GET SET.<br />DON'T GET GRIEFED.</h1>
-          <p className="guide-hero-copy">The practical stuff a normal player needs, without turning the guide into a plugin manual.</p>
+          <div className="section-label">{SITE.serverName} // START HERE</div>
+          <h1 className="display-title">FLOTTDOTCOM'S<br />PLAYER GUIDE.</h1>
+          <p className="guide-hero-copy">Java, Bedrock, claims, homes, travel, Discord, and the commands worth remembering. Everything you need to get into the world without digging through plugin documentation.</p>
           <div className="hero-actions">
             <a className="btn btn-solid" href={SITE.discord} target="_blank" rel="noreferrer"><MessageSquareText size={16} /> JOIN DISCORD</a>
             <Link className="btn" to="/map"><MapPinned size={16} /> WORLD MAP</Link>
@@ -87,9 +90,54 @@ export default function PlayerGuidePage() {
         </div>
       </section>
 
+      <section className="section crossplay-section">
+        <div className="shell">
+          <div className="section-label">02 // JAVA + BEDROCK</div>
+          <div className="crossplay-heading">
+            <div>
+              <h2>ONE WORLD.<br />TWO WAYS IN.</h2>
+            </div>
+            <p>{SITE.serverName} accepts normal Java connections and Bedrock players through Geyser. Use the connection method that matches the version of Minecraft you own.</p>
+          </div>
+
+          <div className="platform-grid">
+            <article className="platform-card">
+              <div className="platform-card-top"><Server size={22} /><span>PC / MAC / LINUX</span></div>
+              <h3>JAVA EDITION</h3>
+              <p>Open Multiplayer → Add Server and enter the full Java address.</p>
+              <div className="platform-details">
+                <div><span>ADDRESS</span><code>{SITE.serverIp}</code></div>
+              </div>
+            </article>
+
+            <article className="platform-card">
+              <div className="platform-card-top"><Gamepad2 size={22} /><span>BEDROCK DIRECT</span></div>
+              <h3>WINDOWS + MOBILE</h3>
+              <p>If your Bedrock edition has an Add Server button, enter the server IP and the Bedrock port below.</p>
+              <div className="platform-details">
+                <div><span>ADDRESS</span><code>{SITE.serverHost}</code></div>
+                <div><span>PORT</span><code>{SITE.bedrockPort}</code></div>
+              </div>
+            </article>
+
+            <article className="platform-card platform-card-console">
+              <div className="platform-card-top"><Gamepad2 size={22} /><span>CONSOLE BEDROCK</span></div>
+              <h3>PLAYSTATION / XBOX / SWITCH</h3>
+              <p>Consoles can join third-party Geyser servers, but many console editions do not expose a normal Add Server field. Use Geyser's current console guide for the supported workaround on your device, then connect to <strong>{SITE.serverHost}</strong> on port <strong>{SITE.bedrockPort}</strong>.</p>
+              <a className="btn btn-dark" href={SITE.geyserConsoleGuide} target="_blank" rel="noreferrer">CONSOLE JOIN METHODS <ExternalLink size={14} /></a>
+            </article>
+          </div>
+
+          <div className="crossplay-note">
+            <strong>ON CONSOLE?</strong>
+            <span>Use the current Geyser instructions instead of copying an old DNS address from a random video. Console workarounds and public connector addresses can change.</span>
+          </div>
+        </div>
+      </section>
+
       <section className="section claims-section">
         <div className="shell">
-          <div className="section-label">02 // CLAIM YOUR STUFF</div>
+          <div className="section-label">03 // CLAIM YOUR STUFF</div>
           <div className="guide-two-column">
             <div>
               <h2>YOUR BUILD SHOULD STAY YOUR BUILD.</h2>
@@ -110,7 +158,7 @@ export default function PlayerGuidePage() {
 
       <section className="section">
         <div className="shell">
-          <div className="section-label">03 // COMMANDS YOU'LL ACTUALLY USE</div>
+          <div className="section-label">04 // COMMANDS YOU'LL ACTUALLY USE</div>
           <div className="command-group-grid">
             {commandGroups.map((group) => (
               <article className="command-group" key={group.title}>
@@ -132,7 +180,7 @@ export default function PlayerGuidePage() {
       <section className="section vanilla-section">
         <div className="shell guide-two-column">
           <div>
-            <div className="section-label">04 // WHAT VANILLA-FIRST MEANS</div>
+            <div className="section-label">05 // WHAT VANILLA-FIRST MEANS</div>
             <h2>CONVENIENCE IS FINE.<br />POWER ISN'T FOR SALE.</h2>
             <p>Homes, TPA, public warps, claims, cosmetic identities, and supporter utility make community survival smoother. The actual Minecraft progression stays Minecraft.</p>
           </div>
@@ -146,7 +194,7 @@ export default function PlayerGuidePage() {
 
       <section className="section">
         <div className="shell">
-          <div className="section-label">05 // STAFF IS SEPARATE</div>
+          <div className="section-label">06 // STAFF IS SEPARATE</div>
           <div className="guide-two-column">
             <div>
               <h2>DISCORD ROLE ≠ MINECRAFT AUTHORITY.</h2>
