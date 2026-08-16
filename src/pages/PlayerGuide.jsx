@@ -1,7 +1,6 @@
 import {
   AlertTriangle,
   Check,
-  Home,
   Link as LinkIcon,
   MapPinned,
   MessageSquareText,
@@ -17,7 +16,7 @@ const quickStart = [
   ["01", "JOIN", `Add ${SITE.serverIp} in Multiplayer.`],
   ["02", "SET HOME", "Use /sethome once you find your base. Everyone gets one home."],
   ["03", "CLAIM", "Protect bases, storage, farms, and builds with GriefPrevention."],
-  ["04", "LINK", "Use /discord link if you want DiscordSRV to connect your Minecraft and Discord identities."],
+  ["04", "LINK", "Use /discord link when you want your Minecraft account connected to your Discord account."],
 ];
 
 const commandGroups = [
@@ -41,7 +40,7 @@ const commandGroups = [
       ["/reply <message>", "Reply to your most recent private message."],
       ["/ignore <player>", "Ignore another player."],
       ["/discord", "View the server Discord information."],
-      ["/discord link", "Link your Minecraft account to Discord."],
+      ["/discord link", "Connect your Minecraft account to Discord."],
     ],
   },
   {
@@ -63,9 +62,9 @@ export default function PlayerGuidePage() {
     <main className="page-main guide-page">
       <section className="section guide-hero">
         <div className="shell">
-          <div className="section-label">PLAYER GUIDE // FLOTTY'S WORLD 2.0</div>
+          <div className="section-label">PLAYER GUIDE // {SITE.serverName}</div>
           <h1 className="display-title">GET IN.<br />GET SET.<br />DON'T GET GRIEFED.</h1>
-          <p className="guide-hero-copy">Everything a normal player should need without dumping a plugin manual on you.</p>
+          <p className="guide-hero-copy">The practical stuff a normal player needs, without turning the guide into a plugin manual.</p>
           <div className="hero-actions">
             <a className="btn btn-solid" href={SITE.discord} target="_blank" rel="noreferrer"><MessageSquareText size={16} /> JOIN DISCORD</a>
             <Link className="btn" to="/map"><MapPinned size={16} /> WORLD MAP</Link>
@@ -94,16 +93,16 @@ export default function PlayerGuidePage() {
           <div className="guide-two-column">
             <div>
               <h2>YOUR BUILD SHOULD STAY YOUR BUILD.</h2>
-              <p>Flotty's World uses GriefPrevention. Hold a golden shovel, right-click one corner of the area you want, then the opposite corner. Expand it later as you earn more claim blocks.</p>
+              <p>{SITE.serverName} uses GriefPrevention. Hold a golden shovel, right-click one corner of the area you want, then the opposite corner. Expand it later as you earn more claim blocks.</p>
               <div className="claim-flow">
                 <div><Shovel /><strong>START WITH {SITE.claimBlocks.starting.toLocaleString()}</strong><span>Enough for a reasonable first protected area.</span></div>
-                <div><ShieldCheck /><strong>+{SITE.claimBlocks.perHour} / ACTIVE HOUR</strong><span>Playing the server keeps expanding what you can protect.</span></div>
+                <div><ShieldCheck /><strong>+{SITE.claimBlocks.perHour} / ACTIVE HOUR</strong><span>Active play keeps expanding what you can protect.</span></div>
                 <div><Users /><strong>TRUST INTENTIONALLY</strong><span>Use the right trust level instead of handing everyone full build access.</span></div>
               </div>
             </div>
             <aside className="guide-note">
               <div className="section-label">IMPORTANT</div>
-              <p>Supporter ranks can add claim-block capacity, and optional claim-block packs may be available later. None of that gives combat, loot, or progression advantages.</p>
+              <p>Supporter ranks can add claim-block capacity. Claim blocks protect land; they never change combat, loot, or survival progression.</p>
             </aside>
           </div>
         </div>
@@ -135,7 +134,7 @@ export default function PlayerGuidePage() {
           <div>
             <div className="section-label">04 // WHAT VANILLA-FIRST MEANS</div>
             <h2>CONVENIENCE IS FINE.<br />POWER ISN'T FOR SALE.</h2>
-            <p>Homes, TPA, public warps, claims, cosmetic identities, and supporter utility are here to make community survival smoother. The actual Minecraft progression stays Minecraft.</p>
+            <p>Homes, TPA, public warps, claims, cosmetic identities, and supporter utility make community survival smoother. The actual Minecraft progression stays Minecraft.</p>
           </div>
           <div className="promise-list">
             {["No paid fly", "No kits or free gear", "No heal/feed/god mode", "No paid damage or drop bonuses", "No creative tools for supporters", "No staff commands sold as perks"].map((item) => (
@@ -150,8 +149,8 @@ export default function PlayerGuidePage() {
           <div className="section-label">05 // STAFF IS SEPARATE</div>
           <div className="guide-two-column">
             <div>
-              <h2>DISCORD AUTHORITY ≠ MINECRAFT AUTHORITY.</h2>
-              <p>Some people help moderate Discord without holding the same Minecraft role. Staff access is assigned for the job someone actually performs on the server, while supporter ranks can exist alongside staff.</p>
+              <h2>DISCORD ROLE ≠ MINECRAFT AUTHORITY.</h2>
+              <p>Discord and Minecraft roles do not have to match. Staff access is assigned for the job someone performs on the server, while linked accounts let the roles that are meant to sync stay connected without importing unrelated Discord authority into Minecraft.</p>
             </div>
             <div className="staff-list">
               {staffRanks.map(([name, description]) => (
