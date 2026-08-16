@@ -1,6 +1,7 @@
 import { ExternalLink, Menu, Radio, X } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
+import FloMark from "./components/FloMark.jsx";
 import HomePage from "./pages/Home.jsx";
 import PlayerGuidePage from "./pages/PlayerGuide.jsx";
 import RanksPage from "./pages/Ranks.jsx";
@@ -8,19 +9,8 @@ import MapPage from "./pages/Map.jsx";
 import { SITE } from "./site.js";
 import "./App.css";
 
-function FloMark({ compact = false }) {
-  return (
-    <span className={`flo-mark ${compact ? "flo-mark-compact" : ""}`} aria-label="FLO">
-      <span>[</span>
-      <strong>FLO</strong>
-      <span>]</span>
-    </span>
-  );
-}
-
 function Header() {
   const [open, setOpen] = useState(false);
-
   const close = () => setOpen(false);
 
   return (
@@ -92,8 +82,6 @@ function StatusTicker() {
     </div>
   );
 }
-
-export { FloMark };
 
 export default function App() {
   return (
