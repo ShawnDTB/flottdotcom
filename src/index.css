@@ -74,14 +74,19 @@ code, .mono { font-family: "DM Mono", ui-monospace, SFMono-Regular, Consolas, "L
 }
 .display-title {
   margin: 0;
+  max-width: 100%;
   font-size: clamp(44px, 8vw, 108px);
   line-height: .92;
   letter-spacing: -.06em;
   text-transform: uppercase;
   font-weight: 900;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 h1, h2, h3, p { margin-top: 0; }
 h2 { font-size: clamp(30px, 4vw, 58px); line-height: 1; letter-spacing: -.045em; }
+h2, h3 { text-wrap: balance; overflow-wrap: normal; word-break: normal; }
 h3 { font-size: 20px; letter-spacing: -.02em; }
 p { color: var(--muted); line-height: 1.65; }
 
