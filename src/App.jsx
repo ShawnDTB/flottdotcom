@@ -14,7 +14,7 @@ const NotFoundPage = lazy(() => import("./pages/NotFound.jsx"));
 const ROUTE_META = {
   "/": {
     title: "flottdotcom // Flotty's World 2.0",
-    description: "Flott / flottdotcom — live content, community, and Flotty's World 2.0 vanilla-first Minecraft survival.",
+    description: "Flott / flottdotcom - live content, community, and Flotty's World 2.0 vanilla-first Minecraft survival.",
   },
   "/player-guide": {
     title: "Player Guide // Flotty's World 2.0",
@@ -161,7 +161,7 @@ export default function App() {
       <RouteEffects />
       <Header />
       <div id="main-content" tabIndex="-1">
-        <Suspense fallback={<div className="shell route-loading" role="status">Loading channel…</div>}>
+        <Suspense fallback={<div className="shell route-loading" role="status">Loading channel...</div>}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/player-guide" element={<PlayerGuidePage />} />
