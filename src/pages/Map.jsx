@@ -4,6 +4,7 @@ import "./Map.css";
 
 export default function MapPage() {
   const configured = Boolean(SITE.mapUrl);
+  const mapLabel = SITE.mapUrl.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
   return (
     <main className="page-main map-page">
@@ -28,8 +29,8 @@ export default function MapPage() {
             <div className="map-terminal-body">
               <MapPinned size={52} />
               <strong>{SITE.serverName.toUpperCase()}</strong>
-              <span>{SITE.serverIp}</span>
-              <p>{configured ? "The live world map is connected and ready to open." : "The world is live; the public browser map is still being prepared. Server and launch updates will be posted through Discord."}</p>
+              <span>{configured ? mapLabel : SITE.serverIp}</span>
+              <p>{configured ? "The live world map is online. Open it to explore terrain, builds, roads, and community areas as the server grows." : "The world is live; the public browser map is still being prepared. Server and launch updates will be posted through Discord."}</p>
             </div>
           </div>
         </div>
