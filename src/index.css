@@ -43,6 +43,18 @@ code, .mono { font-family: "DM Mono", ui-monospace, SFMono-Regular, Consolas, "L
 :focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
 ::selection { background: #f3f3ef; color: #050505; }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .shell { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
 .page-main { min-height: 70vh; }
 .section { padding: 84px 0; border-top: 1px solid var(--line); }
