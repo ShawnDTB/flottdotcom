@@ -7,7 +7,7 @@
 
 .map-primary-header {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 42px;
   align-items: end;
   margin-bottom: 24px;
@@ -16,8 +16,9 @@
 .map-primary-copy { min-width: 0; }
 .map-primary-copy .display-title {
   margin: 10px 0 12px;
-  font-size: clamp(46px, 5.4vw, 84px);
+  font-size: clamp(28px, 5.2vw, 74px);
   line-height: .9;
+  white-space: nowrap;
 }
 .map-primary-copy p {
   max-width: 760px;
@@ -192,7 +193,8 @@
   }
   .map-primary-header { margin-bottom: 16px; }
   .map-primary-copy .display-title {
-    font-size: clamp(40px, 14vw, 62px);
+    font-size: clamp(27px, 8.5vw, 48px);
+    letter-spacing: -.055em;
   }
   .map-primary-copy p { font-size: 14px; }
   .map-primary-meta {
