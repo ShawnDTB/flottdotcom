@@ -12,6 +12,8 @@ import {
   Sparkles,
   TimerReset,
   Users,
+  Video,
+  Youtube,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import FloMark from "../components/FloMark.jsx";
@@ -26,7 +28,9 @@ export default function HomePage() {
   }, []);
 
   async function copyIp() {
-    await navigator.clipboard.writeText(SITE.serverIp);
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(SITE.serverIp);
+    }
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   }
@@ -71,9 +75,29 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section creator-section">
+        <div className="shell creator-grid">
+          <div>
+            <div className="section-label">01 // WHO IS FLOTT?</div>
+            <h2>FLOTTO. ITSFLOTT.<br />FLOTTDOTCOM.</h2>
+          </div>
+          <div className="creator-copy">
+            <p>
+              Flott is a content creator, gamer, and one of the people behind the broader DTB operation. Different handle, same person: the streams, videos, Discord community, and Minecraft world all meet here.
+            </p>
+            <div className="creator-socials">
+              <a href={SITE.twitch} target="_blank" rel="noreferrer"><Radio size={15} /> TWITCH</a>
+              <a href={SITE.youtube} target="_blank" rel="noreferrer"><Youtube size={15} /> YOUTUBE</a>
+              <a href={SITE.tiktok} target="_blank" rel="noreferrer"><Video size={15} /> TIKTOK</a>
+              <a href={SITE.discord} target="_blank" rel="noreferrer"><MessageCircle size={15} /> DISCORD</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="shell">
-          <div className="section-label">01 // THE SERVER</div>
+          <div className="section-label">02 // THE SERVER</div>
           <div className="home-heading-row">
             <h2>KEEP MINECRAFT<br />FEELING LIKE MINECRAFT.</h2>
             <p>Plugins protect the community and cut out unnecessary friction. They do not replace progression, hand out power, or turn survival into a kit server.</p>
@@ -88,7 +112,7 @@ export default function HomePage() {
 
       <section className="section join-section">
         <div className="shell">
-          <div className="section-label">02 // GET IN</div>
+          <div className="section-label">03 // GET IN</div>
           <div className="join-grid">
             <div>
               <h2>JOIN THE WORLD.</h2>
@@ -107,7 +131,7 @@ export default function HomePage() {
 
       <section className="section ranks-preview-section">
         <div className="shell">
-          <div className="section-label">03 // HOW FINE ARE YOU?</div>
+          <div className="section-label">04 // HOW FINE ARE YOU?</div>
           <div className="home-heading-row">
             <h2>RANKS THAT REWARD<br />WITHOUT BREAKING SURVIVAL.</h2>
             <p>Everyone gets the core server. Community regulars and Twitch supporters gain identity, cosmetic options, utility, and more room to protect what they build.</p>
@@ -128,7 +152,7 @@ export default function HomePage() {
       <section className="section claim-feature">
         <div className="shell claim-feature-grid">
           <div>
-            <div className="section-label">04 // YOUR LAND. YOUR TIME.</div>
+            <div className="section-label">05 // YOUR LAND. YOUR TIME.</div>
             <h2>CLAIM MORE BY<br />ACTUALLY PLAYING.</h2>
             <p>Claim blocks are protection, not power. Everyone earns them naturally. Supporter ranks add bonus capacity, and optional claim-block purchases can exist without selling combat advantages.</p>
           </div>
@@ -142,7 +166,7 @@ export default function HomePage() {
 
       <section className="section quick-links-section">
         <div className="shell">
-          <div className="section-label">05 // KEEP MOVING</div>
+          <div className="section-label">06 // KEEP MOVING</div>
           <div className="quick-link-grid">
             <Link to="/player-guide" className="quick-link"><Gamepad2 /><strong>PLAYER GUIDE</strong><span>Commands, claims, homes, linking, and the basics.</span></Link>
             <Link to="/map" className="quick-link"><MapPinned /><strong>WORLD MAP</strong><span>Open the BlueMap destination when the public endpoint is connected.</span></Link>
