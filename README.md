@@ -1,13 +1,15 @@
 # flottdotcom
 
-Official web home for **Flott / flottdotcom** and **Flotty's World 2.0**.
+Official web home for **Flott / flottdotcom** and the community behind **Flotty's World 2.0**.
 
-This project intentionally reuses the proven information architecture from the VanillaBeamsTV site—creator-first homepage, player guide, ranks/perks, map, Discord, and live Twitch access—while using a completely different visual system built around the `[FLO]` identity.
+The project keeps the proven information architecture from the VanillaBeamsTV site—creator-first homepage, player guide, ranks/perks, map, Discord, and live Twitch access—while using a separate visual system built around the `[FLO]` identity.
 
 ## Direction
 
+- `FLOTTDOTCOM` is the top-level creator brand
+- Flotty's World 2.0 is the flagship Minecraft/community experience
 - Black / off-white late-night broadcast aesthetic
-- `[FLO]` as the primary identity mark
+- `[FLO]` as the shared identity mark
 - Vanilla-first Minecraft survival messaging
 - Quality-of-life supporter perks, never pay-to-win power
 - Clear separation between supporter ranks and staff authority
@@ -28,14 +30,28 @@ npm install
 npm run dev
 ```
 
-## Build
+## Validate
 
 ```bash
+npm run lint
 npm run build
 ```
 
-## Important configuration
+## Configuration
 
-Site-wide links and server values live in `src/site.js` so they can be changed without hunting through page components.
+Site-wide links, rank data, server values, and claim settings live in `src/site.js`.
 
-`VITE_MAP_URL` can be supplied at build time to point `/map` visitors at the live BlueMap endpoint once its public URL is finalized.
+Optional build-time environment variables:
+
+```bash
+VITE_SERVER_IP=play.example.com
+VITE_MAP_URL=https://map.example.com
+VITE_YOUTUBE_URL=https://www.youtube.com/@yourhandle
+VITE_TIKTOK_URL=https://www.tiktok.com/@yourhandle
+```
+
+The Twitch and Discord URLs are known defaults. YouTube and TikTok are intentionally hidden until their URLs are explicitly configured so the public site never guesses at a creator handle.
+
+## dev-0 audit
+
+The product/UX audit that initiated the `dev-0` pass is documented in `docs/site-audit-dev-0.md`.
