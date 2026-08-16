@@ -1,4 +1,4 @@
-import { ExternalLink, MapPinned, Server } from "lucide-react";
+import { ExternalLink, MapPinned, MessageCircle, Server } from "lucide-react";
 import { SITE } from "../site.js";
 import "./Map.css";
 
@@ -10,23 +10,26 @@ export default function MapPage() {
       <section className="section map-hero">
         <div className="shell map-hero-grid">
           <div>
-            <div className="section-label">WORLD MAP // FLOTTY'S WORLD 2.0</div>
+            <div className="section-label">WORLD MAP // {SITE.serverName}</div>
             <h1 className="display-title">SEE WHAT<br />EVERYONE'S<br />BUILDING.</h1>
             <p className="map-copy">BlueMap is the live view of the SMP: terrain, builds, travel planning, and the shape of the world as the community keeps moving outward.</p>
             {configured ? (
               <a className="btn btn-solid" href={SITE.mapUrl} target="_blank" rel="noreferrer"><MapPinned size={16} /> OPEN LIVE MAP <ExternalLink size={14} /></a>
             ) : (
-              <div className="map-pending"><Server size={16} /><span>The public BlueMap URL is ready to be plugged in through <code>VITE_MAP_URL</code>.</span></div>
+              <div className="map-actions">
+                <div className="map-pending"><Server size={16} /><span>The public world map is not online yet.</span></div>
+                <a className="btn" href={SITE.discord} target="_blank" rel="noreferrer"><MessageCircle size={16} /> CHECK DISCORD</a>
+              </div>
             )}
           </div>
 
           <div className="map-terminal">
-            <div className="map-terminal-top">MAP.STATUS // {configured ? "CONNECTED" : "WAITING_FOR_PUBLIC_ENDPOINT"}</div>
+            <div className="map-terminal-top">MAP.STATUS // {configured ? "CONNECTED" : "COMING_SOON"}</div>
             <div className="map-terminal-body">
               <MapPinned size={52} />
-              <strong>FLOTTY'S WORLD 2.0</strong>
+              <strong>{SITE.serverName.toUpperCase()}</strong>
               <span>{SITE.serverIp}</span>
-              <p>{configured ? "Live BlueMap routing is configured." : "The website route is finished. Set VITE_MAP_URL during deployment once the public BlueMap address is finalized."}</p>
+              <p>{configured ? "The live world map is connected and ready to open." : "The world is live; the public browser map is still being prepared. Server and launch updates will be posted through Discord."}</p>
             </div>
           </div>
         </div>
