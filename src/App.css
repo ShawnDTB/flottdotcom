@@ -76,13 +76,22 @@
 }
 .ticker-track {
   display: inline-flex;
-  gap: 40px;
+  gap: 0;
   padding: 9px 0 max(9px, env(safe-area-inset-bottom));
   min-width: max-content;
   animation: ticker 30s linear infinite;
   will-change: transform;
 }
-.ticker-track span::after { content: " //"; color: #777; }
+.ticker-track span {
+  display: inline-flex;
+  align-items: center;
+}
+.ticker-track span::after {
+  content: "//";
+  color: #777;
+  margin: 0 22px;
+  letter-spacing: 0;
+}
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 .route-loading { min-height: 60vh; display: grid; place-items: center; color: var(--muted); font: 12px "DM Mono", ui-monospace, monospace; text-transform: uppercase; }
