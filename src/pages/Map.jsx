@@ -17,7 +17,7 @@ export default function MapPage() {
           <div className="map-primary-copy">
             <div className="section-label">WORLD MAP // {SITE.serverName}</div>
             <h1 className="display-title">EXPLORE THE WORLD.</h1>
-            <p>BlueMap follows the real survival world as it grows — builds, roads, community areas, terrain, and everything in between.</p>
+            <p>BlueMap follows the real survival world as it grows - builds, roads, community areas, terrain, and everything in between.</p>
           </div>
 
           <div className="map-primary-meta">
