@@ -66,7 +66,7 @@ export default function PlayerGuidePage() {
       <section className="section guide-hero">
         <div className="shell">
           <div className="section-label">{SITE.serverName} // START HERE</div>
-          <h1 className="display-title">FLOTTDOTCOM'S<br />PLAYER GUIDE.</h1>
+          <h1 className="display-title">FLOTTDOTCOM'S PLAYER GUIDE.</h1>
           <p className="guide-hero-copy">Java, Bedrock, claims, homes, travel, Discord, and the commands worth remembering. Everything you need to get into the world without digging through plugin documentation.</p>
           <div className="hero-actions">
             <a className="btn btn-solid" href={SITE.discord} target="_blank" rel="noreferrer"><MessageSquareText size={16} /> JOIN DISCORD</a>
