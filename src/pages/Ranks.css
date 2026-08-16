@@ -4,6 +4,10 @@
     radial-gradient(circle at 18% 0%, rgba(255, 255, 255, .04), transparent 28%),
     linear-gradient(180deg, #080808 0%, #0b0b0b 100%);
 }
+.ranks-hero .display-title {
+  font-size: clamp(38px, 6.4vw, 96px);
+  white-space: nowrap;
+}
 .ranks-hero-copy { max-width: 700px; font-size: 18px; margin-top: 28px; }
 .ranks-hero + .section { background: #111111; }
 
@@ -61,6 +65,10 @@
 
 @media (max-width: 650px) {
   .ranks-hero { padding-top: 58px; background: linear-gradient(180deg, #080808 0%, #0b0b0b 100%); }
+  .ranks-hero .display-title {
+    font-size: clamp(27px, 9vw, 44px);
+    letter-spacing: -.055em;
+  }
   .rank-card-grid { grid-template-columns: 1fr; }
   .rank-card { min-height: auto; border-right: 0; }
   .rank-card-bottom { min-height: 74px; }
