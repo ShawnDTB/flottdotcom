@@ -30,6 +30,8 @@ const ROUTE_META = {
   },
 };
 
+const TICKER_ITEMS = ["[FLO]", SITE.brandName, SITE.serverName, SITE.serverIp, "VANILLA-FIRST", "NO PAY-TO-WIN"];
+
 function RouteEffects() {
   const location = useLocation();
 
@@ -143,12 +145,20 @@ function Footer() {
   );
 }
 
+function TickerGroup() {
+  return (
+    <div className="ticker-group">
+      {TICKER_ITEMS.map((item) => <span key={item}>{item}</span>)}
+    </div>
+  );
+}
+
 function StatusTicker() {
   return (
     <div className="status-ticker" aria-hidden="true">
       <div className="ticker-track">
-        <span>[FLO]</span><span>{SITE.brandName}</span><span>{SITE.serverName}</span><span>{SITE.serverIp}</span><span>VANILLA-FIRST</span><span>NO PAY-TO-WIN</span>
-        <span>[FLO]</span><span>{SITE.brandName}</span><span>{SITE.serverName}</span><span>{SITE.serverIp}</span><span>VANILLA-FIRST</span><span>NO PAY-TO-WIN</span>
+        <TickerGroup />
+        <TickerGroup />
       </div>
     </div>
   );
