@@ -4,6 +4,10 @@
     radial-gradient(circle at 20% 0%, rgba(255, 255, 255, .035), transparent 28%),
     linear-gradient(180deg, #080808 0%, #0b0b0b 100%);
 }
+.guide-hero .display-title {
+  font-size: clamp(42px, 5.1vw, 78px);
+  white-space: nowrap;
+}
 .guide-hero-copy { max-width: 760px; font-size: 18px; margin: 28px 0 0; }
 .guide-hero + .section { background: #111111; }
 .guide-start-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); }
@@ -76,6 +80,15 @@
   .platform-card { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .platform-card:last-child { border-bottom: 0; }
   .platform-card h3 { margin-top: 34px; }
+}
+
+@media (max-width: 700px) {
+  .guide-hero .display-title {
+    max-width: 11ch;
+    font-size: clamp(38px, 11vw, 54px);
+    white-space: normal;
+    text-wrap: balance;
+  }
 }
 
 @media (max-width: 650px) {
