@@ -28,7 +28,7 @@ export default function RanksPage() {
       <section className="section ranks-hero">
         <div className="shell">
           <div className="section-label">RANKS & PERKS // {SITE.serverName}</div>
-          <h1 className="display-title">HOW FINE<br />ARE YOU?</h1>
+          <h1 className="display-title">HOW FINE ARE YOU?</h1>
           <p className="ranks-hero-copy">A shared core game for everyone, earned community identity for regulars, and supporter perks that never become survival power.</p>
           <div className="hero-actions">
             <a className="btn btn-solid" href={SITE.twitch} target="_blank" rel="noreferrer"><Crown size={16} /> SUPPORT FLOTT ON TWITCH</a>
@@ -64,7 +64,7 @@ export default function RanksPage() {
                   {supporterRanks.map((rank) => (
                     <tr key={rank.key}>
                       <th scope="row" data-label="Rank">{rank.name}</th>
-                      <td data-label="Rank bonus">{rank.totalBonus ? `+${rank.totalBonus.toLocaleString()}` : "—"}</td>
+                      <td data-label="Rank bonus">{rank.totalBonus ? `+${rank.totalBonus.toLocaleString()}` : "BASE"}</td>
                       <td data-label="With starting blocks">{(SITE.claimBlocks.starting + rank.totalBonus).toLocaleString()}</td>
                     </tr>
                   ))}
