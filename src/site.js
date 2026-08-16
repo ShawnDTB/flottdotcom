@@ -1,3 +1,6 @@
+const configuredJavaAddress = import.meta.env.VITE_SERVER_IP || "74.112.77.32";
+const javaAddress = configuredJavaAddress.replace(/:25565$/, "");
+
 export const SITE = {
   brandName: "FLOTTDOTCOM",
   creator: "Flott",
@@ -5,7 +8,7 @@ export const SITE = {
   aliases: ["Flotto", "itsflott", "flott", "flottdotcom"],
   serverName: "Flotty's World 2.0",
   serverHost: import.meta.env.VITE_SERVER_HOST || "74.112.77.32",
-  serverIp: import.meta.env.VITE_SERVER_IP || "74.112.77.32",
+  serverIp: javaAddress,
   bedrockPort: Number(import.meta.env.VITE_BEDROCK_PORT || 19132),
   discord: "https://discord.gg/yJBHueFU6x",
   twitch: "https://www.twitch.tv/flottdotcom",
