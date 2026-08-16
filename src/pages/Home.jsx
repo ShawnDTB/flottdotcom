@@ -16,44 +16,72 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import FloMark from "../components/FloMark.jsx";
-import { SITE, supporterRanks } from "../site.js";
+import { creatorSocials, SITE, supporterRanks } from "../site.js";
 import "./Home.css";
 
+const socialIcons = {
+  twitch: Radio,
+  youtube: Play,
+  tiktok: Video,
+  discord: MessageCircle,
+};
+
 export default function HomePage() {
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState("idle");
   const twitchEmbedSrc = useMemo(() => {
     const parent = typeof window !== "undefined" ? window.location.hostname : "localhost";
     return `https://player.twitch.tv/?channel=${SITE.handle}&parent=${parent}&muted=true`;
   }, []);
 
   async function copyIp() {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(SITE.serverIp);
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(SITE.serverIp);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = SITE.serverIp;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+      }
+
+      setCopyState("copied");
+    } catch {
+      setCopyState("failed");
     }
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+
+    window.setTimeout(() => setCopyState("idle"), 2200);
   }
+
+  const copyLabel = copyState === "copied" ? "IP COPIED" : copyState === "failed" ? "COPY FAILED" : "COPY SERVER IP";
 
   return (
     <main className="page-main">
       <section className="home-hero">
         <div className="shell home-hero-grid">
           <div className="home-hero-copy">
-            <div className="hero-kicker"><span className="live-dot" /> FLOTTY'S WORLD 2.0</div>
+            <div className="hero-kicker"><span className="live-dot" /> {SITE.brandName} // {SITE.serverName}</div>
             <FloMark />
             <h1>VANILLA SURVIVAL.<br />FLOTT ENERGY.</h1>
             <p>
-              The creator hub for Flott and the home of a community-built Minecraft SMP that keeps progression vanilla and the convenience sensible.
+              Flott's creator hub and the home of a community-built Minecraft SMP that keeps progression vanilla, convenience sensible, and the community connected between streams.
             </p>
             <div className="hero-actions">
               <button className="btn btn-solid" type="button" onClick={copyIp}>
-                {copied ? <Check size={16} /> : <Clipboard size={16} />}
-                {copied ? "IP COPIED" : "COPY SERVER IP"}
+                {copyState === "copied" ? <Check size={16} /> : <Clipboard size={16} />}
+                {copyLabel}
               </button>
               <a className="btn" href={SITE.twitch} target="_blank" rel="noreferrer">
                 <Radio size={16} /> WATCH FLOTT LIVE
               </a>
             </div>
+            <span className="sr-only" aria-live="polite">
+              {copyState === "copied" ? `Server address copied: ${SITE.serverIp}` : copyState === "failed" ? `Could not copy the server address. The address is ${SITE.serverIp}.` : ""}
+            </span>
             <div className="server-strip">
               <span>SERVER</span>
               <strong>{SITE.serverIp}</strong>
@@ -62,9 +90,18 @@ export default function HomePage() {
           </div>
 
           <div className="broadcast-card">
-            <div className="broadcast-card-top"><span>CHANNEL // FLOTTDOTCOM</span><span>LIVE FEED</span></div>
+            <div className="broadcast-card-top"><span>CHANNEL // {SITE.handle}</span><span>LIVE FEED</span></div>
             <div className="broadcast-screen">
-              <iframe title="flottdotcom Twitch player" src={twitchEmbedSrc} width="100%" height="100%" allowFullScreen />
+              <iframe
+                title="flottdotcom Twitch player"
+                src={twitchEmbedSrc}
+                width="100%"
+                height="100%"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
             </div>
             <div className="broadcast-card-bottom">
               <a href={SITE.twitch} target="_blank" rel="noreferrer"><Play size={15} /> OPEN TWITCH</a>
@@ -82,13 +119,13 @@ export default function HomePage() {
           </div>
           <div className="creator-copy">
             <p>
-              Flott is a content creator, gamer, and one of the people behind the broader DTB operation. Different handle, same person: the streams, videos, Discord community, and Minecraft world all meet here.
+              Different handles, same creator. Flott streams, makes content, and keeps a community moving across Twitch, Discord, and {SITE.serverName}. This site is the shared home for all of it.
             </p>
             <div className="creator-socials">
-              <a href={SITE.twitch} target="_blank" rel="noreferrer"><Radio size={15} /> TWITCH</a>
-              <a href={SITE.youtube} target="_blank" rel="noreferrer"><Play size={15} /> YOUTUBE</a>
-              <a href={SITE.tiktok} target="_blank" rel="noreferrer"><Video size={15} /> TIKTOK</a>
-              <a href={SITE.discord} target="_blank" rel="noreferrer"><MessageCircle size={15} /> DISCORD</a>
+              {creatorSocials.map((social) => {
+                const Icon = socialIcons[social.key] || ExternalLink;
+                return <a key={social.key} href={social.href} target="_blank" rel="noreferrer"><Icon size={15} /> {social.label.toUpperCase()}</a>;
+              })}
             </div>
           </div>
         </div>
@@ -99,7 +136,7 @@ export default function HomePage() {
           <div className="section-label">02 // THE SERVER</div>
           <div className="home-heading-row">
             <h2>KEEP MINECRAFT<br />FEELING LIKE MINECRAFT.</h2>
-            <p>Plugins protect the community and cut out unnecessary friction. They do not replace progression, hand out power, or turn survival into a kit server.</p>
+            <p>Plugins protect the community and cut unnecessary friction. They do not replace progression, hand out power, or turn survival into a kit server.</p>
           </div>
           <div className="grid-three philosophy-grid">
             <article className="panel philosophy-card"><ShieldCheck /><h3>VANILLA FIRST</h3><p>No paid fly, free gear, god mode, damage boosts, or progression shortcuts.</p></article>
@@ -115,14 +152,14 @@ export default function HomePage() {
           <div className="join-grid">
             <div>
               <h2>JOIN THE WORLD.</h2>
-              <p>No giant onboarding maze. Add the server, get in, claim what you build, and link Discord if you want your identities connected.</p>
+              <p>Add the server, find your spot, protect what you build, and link Discord when you want your Minecraft identity connected to the community.</p>
               <Link className="btn" to="/player-guide">READ THE PLAYER GUIDE <ExternalLink size={14} /></Link>
             </div>
             <ol className="join-steps">
               <li><span>01</span><div><strong>OPEN MINECRAFT</strong><small>Multiplayer → Add Server</small></div></li>
               <li><span>02</span><div><strong>ADD THE ADDRESS</strong><small>{SITE.serverIp}</small></div></li>
               <li><span>03</span><div><strong>SET YOUR HOME</strong><small>/sethome once you find your spot</small></div></li>
-              <li><span>04</span><div><strong>CLAIM YOUR BUILD</strong><small>Use GriefPrevention before you get too comfortable</small></div></li>
+              <li><span>04</span><div><strong>CLAIM YOUR BUILD</strong><small>Protect your base with GriefPrevention</small></div></li>
             </ol>
           </div>
         </div>
@@ -140,7 +177,7 @@ export default function HomePage() {
               <article key={rank.key} className={`rank-preview-card rank-${rank.accent}`}>
                 <small>{rank.label}</small>
                 <strong>{rank.name}</strong>
-                <span>{rank.totalBonus ? `+${rank.totalBonus.toLocaleString()} rank claim blocks` : "base survival rank"}</span>
+                <span>{rank.totalBonus ? `+${rank.totalBonus.toLocaleString()} rank claim blocks` : "core survival rank"}</span>
               </article>
             ))}
           </div>
@@ -153,7 +190,7 @@ export default function HomePage() {
           <div>
             <div className="section-label">05 // YOUR LAND. YOUR TIME.</div>
             <h2>CLAIM MORE BY<br />ACTUALLY PLAYING.</h2>
-            <p>Claim blocks are protection, not power. Everyone earns them naturally. Supporter ranks add bonus capacity, and optional claim-block purchases can exist without selling combat advantages.</p>
+            <p>Claim blocks protect builds; they do not make anyone stronger. Everyone earns them naturally, while community and supporter ranks add more room without selling combat advantages.</p>
           </div>
           <div className="claim-numbers">
             <div><span>START</span><strong>{SITE.claimBlocks.starting.toLocaleString()}</strong><small>claim blocks</small></div>
@@ -168,7 +205,7 @@ export default function HomePage() {
           <div className="section-label">06 // KEEP MOVING</div>
           <div className="quick-link-grid">
             <Link to="/player-guide" className="quick-link"><Gamepad2 /><strong>PLAYER GUIDE</strong><span>Commands, claims, homes, linking, and the basics.</span></Link>
-            <Link to="/map" className="quick-link"><MapPinned /><strong>WORLD MAP</strong><span>Open the BlueMap destination when the public endpoint is connected.</span></Link>
+            <Link to="/map" className="quick-link"><MapPinned /><strong>WORLD MAP</strong><span>See the live world when the public BlueMap is online.</span></Link>
             <a href={SITE.discord} target="_blank" rel="noreferrer" className="quick-link"><MessageCircle /><strong>DISCORD</strong><span>Community chat, server updates, roles, and support.</span></a>
           </div>
         </div>
