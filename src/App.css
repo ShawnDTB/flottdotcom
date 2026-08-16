@@ -78,15 +78,13 @@
   display: flex;
   width: max-content;
   padding: 9px 0 max(9px, env(safe-area-inset-bottom));
-  animation: ticker 34s linear infinite;
+  animation: ticker 88s linear infinite;
   will-change: transform;
 }
 .ticker-group {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
-  justify-content: space-around;
-  min-width: 100vw;
   width: max-content;
 }
 .ticker-group span {
@@ -97,10 +95,13 @@
 .ticker-group span::after {
   content: "//";
   color: #777;
-  margin: 0 clamp(20px, 2.25vw, 46px);
+  margin: 0 22px;
   letter-spacing: 0;
 }
-@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes ticker {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
 
 .route-loading { min-height: 60vh; display: grid; place-items: center; color: var(--muted); font: 12px "DM Mono", ui-monospace, monospace; text-transform: uppercase; }
 #main-content:focus { outline: none; }
