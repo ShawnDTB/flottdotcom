@@ -83,8 +83,9 @@ export default function HomePage() {
               {copyState === "copied" ? `Server address copied: ${SITE.serverIp}` : copyState === "failed" ? `Could not copy the server address. The address is ${SITE.serverIp}.` : ""}
             </span>
             <div className="server-strip">
-              <span>SERVER</span>
+              <span>JAVA</span>
               <strong>{SITE.serverIp}</strong>
+              <span>BEDROCK // {SITE.serverHost}:{SITE.bedrockPort}</span>
               <span>VANILLA-FIRST</span>
             </div>
           </div>
@@ -152,13 +153,13 @@ export default function HomePage() {
           <div className="join-grid">
             <div>
               <h2>JOIN THE WORLD.</h2>
-              <p>Add the server, find your spot, protect what you build, and link Discord when you want your Minecraft identity connected to the community.</p>
+              <p>Java players can connect directly. Bedrock players join the same world through Geyser, with a console workaround when their version does not expose an Add Server field.</p>
               <Link className="btn" to="/player-guide">READ THE PLAYER GUIDE <ExternalLink size={14} /></Link>
             </div>
             <ol className="join-steps">
-              <li><span>01</span><div><strong>OPEN MINECRAFT</strong><small>Multiplayer → Add Server</small></div></li>
-              <li><span>02</span><div><strong>ADD THE ADDRESS</strong><small>{SITE.serverIp}</small></div></li>
-              <li><span>03</span><div><strong>SET YOUR HOME</strong><small>/sethome once you find your spot</small></div></li>
+              <li><span>01</span><div><strong>CHOOSE YOUR EDITION</strong><small>Java or Bedrock</small></div></li>
+              <li><span>02</span><div><strong>JAVA EDITION</strong><small>{SITE.serverIp}</small></div></li>
+              <li><span>03</span><div><strong>BEDROCK EDITION</strong><small>{SITE.serverHost}:{SITE.bedrockPort}</small></div></li>
               <li><span>04</span><div><strong>CLAIM YOUR BUILD</strong><small>Protect your base with GriefPrevention</small></div></li>
             </ol>
           </div>
@@ -204,8 +205,8 @@ export default function HomePage() {
         <div className="shell">
           <div className="section-label">06 // KEEP MOVING</div>
           <div className="quick-link-grid">
-            <Link to="/player-guide" className="quick-link"><Gamepad2 /><strong>PLAYER GUIDE</strong><span>Commands, claims, homes, linking, and the basics.</span></Link>
-            <Link to="/map" className="quick-link"><MapPinned /><strong>WORLD MAP</strong><span>See the live world when the public BlueMap is online.</span></Link>
+            <Link to="/player-guide" className="quick-link"><Gamepad2 /><strong>PLAYER GUIDE</strong><span>Java, Bedrock, console join help, commands, claims, homes, and linking.</span></Link>
+            <Link to="/map" className="quick-link"><MapPinned /><strong>WORLD MAP</strong><span>Open the live BlueMap and see what the community is building.</span></Link>
             <a href={SITE.discord} target="_blank" rel="noreferrer" className="quick-link"><MessageCircle /><strong>DISCORD</strong><span>Community chat, server updates, roles, and support.</span></a>
           </div>
         </div>
