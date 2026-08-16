@@ -18,15 +18,15 @@ const ROUTE_META = {
   },
   "/player-guide": {
     title: "Player Guide // Flotty's World 2.0",
-    description: "Quick-start guide, homes, TPA, claims, public warps, Discord linking, and core commands for Flotty's World 2.0.",
+    description: "Join Flotty's World 2.0 from Java or Bedrock, then learn homes, TPA, claims, public warps, Discord linking, and core commands.",
   },
   "/ranks": {
     title: "Ranks & Perks // Flotty's World 2.0",
     description: "Compare [FLO], UNFINE, FINE, FINER, and FINEST perks while keeping Flotty's World 2.0 vanilla-first and fair.",
   },
   "/map": {
-    title: "World Map // Flotty's World 2.0",
-    description: "Open the Flotty's World 2.0 live world map when available and follow how the community builds outward.",
+    title: "Live World Map // Flotty's World 2.0",
+    description: "Open the live BlueMap for Flotty's World 2.0 and follow how the community builds outward.",
   },
 };
 
@@ -58,6 +58,7 @@ function RouteEffects() {
 function Header() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     setOpen(false);
@@ -78,6 +79,8 @@ function Header() {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
+
+  if (isHome) return null;
 
   const close = () => setOpen(false);
 
