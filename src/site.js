@@ -5,7 +5,7 @@ export const SITE = {
   aliases: ["Flotto", "itsflott", "flott", "flottdotcom"],
   serverName: "Flotty's World 2.0",
   serverHost: import.meta.env.VITE_SERVER_HOST || "74.112.77.32",
-  serverIp: import.meta.env.VITE_SERVER_IP || "74.112.77.32:25565",
+  serverIp: import.meta.env.VITE_SERVER_IP || "74.112.77.32",
   bedrockPort: Number(import.meta.env.VITE_BEDROCK_PORT || 19132),
   discord: "https://discord.gg/yJBHueFU6x",
   twitch: "https://www.twitch.tv/flottdotcom",
