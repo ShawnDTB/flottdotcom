@@ -1,19 +1,20 @@
 # flottdotcom
 
-Official web home for **Flott / flottdotcom** and the community behind **Flotty's World 2.0**.
+Official web home for **Flott / flottdotcom**: music, streams, videos, and everything FLO.
 
-The project keeps the proven information architecture from the VanillaBeamsTV site—creator-first homepage, player guide, ranks/perks, map, Discord, and live Twitch access—while using a separate visual system built around the `[FLO]` identity.
+The homepage leads with **21 Days**, followed by Twitch, YouTube, TikTok, an introduction to Sage, and the community. The `/community` page houses Discord and Flotty's World 2.0, with the existing `/player-guide`, `/ranks`, and `/map` URLs preserved.
 
 ## Direction
 
-- `FLOTTDOTCOM` is the top-level creator brand
+- FLO brings together everything Flott creates and represents
+- Music and content creation come first; community and Minecraft follow
 - Flotty's World 2.0 is the flagship Minecraft/community experience
 - Black / off-white late-night broadcast aesthetic
 - `[FLO]` as the shared identity mark
 - Vanilla-first Minecraft survival messaging
 - Quality-of-life supporter perks, never pay-to-win power
 - Clear separation between supporter ranks and staff authority
-- Twitch-first creator presentation for `flottdotcom`
+- Official release artwork and listening links, with an album on the way
 
 ## Stack
 
@@ -39,7 +40,9 @@ npm run build
 
 ## Configuration
 
-Site-wide links, rank data, server values, Bedrock connection details, and claim settings live in `src/site.js`.
+Site-wide links, `FEATURED_RELEASE`, rank data, server values, Bedrock connection details, and claim settings live in `src/site.js`. Update the featured release there when the album arrives. The official 21 Days cover is saved in `public/21-days.jpg` from Spotify's release metadata. Baseline social-sharing metadata lives in `index.html`; update it alongside a future release change.
+
+Spotify and Twitch players load only after a visitor chooses to open them. Direct listening and channel links remain available independently of the embeds.
 
 Current defaults:
 
@@ -60,8 +63,10 @@ VITE_YOUTUBE_URL=https://www.youtube.com/@yourhandle
 VITE_TIKTOK_URL=https://www.tiktok.com/@yourhandle
 ```
 
-The Twitch and Discord URLs are known defaults. YouTube and TikTok are intentionally hidden until their URLs are explicitly configured so the public site never guesses at a creator handle.
+Spotify, Twitch, YouTube (`@flottdotcom`), TikTok (`@flott.com`), Discord, and the Seemless link hub use confirmed destinations. YouTube and TikTok can still be overridden with the environment variables above.
 
 ## dev-0 audit
 
 The product/UX audit that initiated the `dev-0` pass is documented in `docs/site-audit-dev-0.md`.
+
+The music and creator transition is described in `docs/flo-transition-audit.md`.

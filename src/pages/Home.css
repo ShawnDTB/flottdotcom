@@ -100,3 +100,82 @@
   .broadcast-card-bottom { align-items: stretch; flex-direction: column; }
   .broadcast-card-bottom a { min-height: 44px; }
 }
+
+/* Music and creator homepage */
+.home-hero-copy h1 { font-size: clamp(38px, 4.3vw, 64px); }
+.release-card { width: 100%; max-width: 450px; justify-self: end; }
+.release-status { color: var(--lime); }
+.release-art { display: block; position: relative; border-block: 1px solid var(--line); background: #050505; }
+.release-art img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.art-listen { position: absolute; inset: auto 16px 16px; display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; background: var(--text); color: var(--bg); font: 11px "DM Mono", monospace; }
+.release-art:hover .art-listen { background: var(--lime); }
+.release-title { padding: 22px 20px; display: flex; justify-content: space-between; align-items: end; gap: 20px; border-bottom: 1px solid var(--line); }
+.release-title span { font: 10px "DM Mono", monospace; color: var(--muted); }
+.release-title h2 { font-size: 42px; margin: 8px 0 0; }
+.broadcast-card-bottom button { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; border: 0; padding: 0; background: transparent; cursor: pointer; font: inherit; color: var(--text); }
+.broadcast-card-bottom button:hover { color: var(--lime); }
+.spotify-player { display: block; border: 0; }
+.release-note { display: flex; flex-wrap: wrap; gap: 12px; border-top: 1px solid var(--line); margin-top: 30px; padding-top: 20px; font: 10px "DM Mono", monospace; color: var(--muted); line-height: 1.7; }
+.release-note > span:first-child { color: var(--lime); }
+.release-note strong { color: var(--text); text-transform: uppercase; }
+.release-note > span:last-child { flex-basis: 100%; }
+.watch-section { background: #101010; }
+.watch-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; }
+.watch-platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.platform-link { border: 1px solid var(--line); background: #080808; padding: 22px; display: flex; flex-direction: column; min-width: 0; min-height: 340px; transition: border-color .18s; }
+.platform-link:hover { border-color: var(--text); }
+.platform-link-top { display: flex; align-items: center; gap: 10px; margin-bottom: 45px; }
+.platform-link-top span { font: 10px "DM Mono", monospace; }
+.platform-link-top > svg:last-child { margin-left: auto; flex-shrink: 0; }
+.platform-link h3 { font-size: 24px; line-height: 1.1; }
+.platform-link p { font-size: 13px; }
+.platform-action { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 20px; font: 10px "DM Mono", monospace; line-height: 1.5; }
+.stream-cover { border: 0; width: 100%; height: 100%; min-height: 230px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px; background: repeating-linear-gradient(0deg, #0d0d0d, #0d0d0d 3px, #101010 3px, #101010 4px); cursor: pointer; }
+.stream-cover > svg { color: var(--red); }
+.stream-cover strong { font-size: clamp(26px, 3vw, 42px); line-height: .98; letter-spacing: -.04em; }
+.stream-cover span { display: flex; align-items: center; gap: 9px; font: 10px "DM Mono", monospace; }
+.stream-cover:hover span { color: var(--lime); }
+.twitch-card { box-shadow: 7px 7px 0 #1b1b1b; }
+.twitch-card .broadcast-card-bottom { flex-wrap: wrap; }
+.twitch-card .broadcast-card-bottom > span { font-size: 9px; line-height: 1.5; }
+.muted-title { color: var(--muted); }
+.creator-copy > p + p { font-size: 16px; }
+.community-preview-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); }
+.community-preview-grid .quick-link { min-height: 280px; }
+.quick-link .platform-action svg { margin-bottom: 0; }
+.text-link { min-height: 44px; display: inline-flex; align-items: center; gap: 12px; font: 11px "DM Mono", monospace; }
+.text-link:hover { color: var(--lime); }
+.community-intro { max-width: 730px; margin-top: 28px; font-size: 18px; }
+.community-nav { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 36px; border-top: 1px solid var(--line); padding-top: 16px; }
+.community-nav a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font: 11px "DM Mono", monospace; text-transform: uppercase; }
+.community-nav a:hover { color: var(--lime); }
+.copy-feedback { min-height: 24px; margin-top: 15px; font-size: 12px; }
+.footer-meta a { display: flex; align-items: center; min-height: 36px; }
+.footer-meta a:hover { color: var(--text); }
+@media (max-width: 1100px) {
+  .watch-grid { grid-template-columns: 1fr; }
+  .watch-platforms { grid-template-columns: 1fr 1fr; }
+  .platform-link { min-height: 280px; }
+}
+@media (max-width: 980px) {
+  .release-card { justify-self: start; max-width: 450px; }
+  .home-hero-grid { grid-template-columns: 1fr 1fr; gap: 26px; }
+  .home-hero-copy h1 { font-size: 40px; }
+  .home-hero-copy .flo-mark { font-size: 72px; }
+  .home-hero-copy .hero-actions { flex-direction: column; }
+  .home-hero-copy .hero-actions .btn { flex: auto; }
+}
+@media (max-width: 700px) {
+  .home-hero-grid { grid-template-columns: 1fr; gap: 38px; }
+  .home-hero-copy h1 { font-size: clamp(34px, 8.5vw, 54px); }
+  .release-card { justify-self: center; }
+  .community-preview-grid { grid-template-columns: 1fr; }
+  .watch-platforms { grid-template-columns: 1fr; }
+  .platform-link { min-height: 240px; }
+  .platform-link-top { margin-bottom: 28px; }
+  .release-title { padding: 18px 16px; }
+  .release-title h2 { font-size: 36px; }
+  .release-card .broadcast-card-bottom { flex-direction: row; }
+  .stream-cover { min-height: 190px; gap: 14px; }
+  .broadcast-screen:has(.stream-cover) { aspect-ratio: auto; }
+}

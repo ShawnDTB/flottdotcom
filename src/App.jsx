@@ -1,20 +1,25 @@
-import { ExternalLink, Menu, Radio, X } from "lucide-react";
+import { ExternalLink, Headphones, Menu, X } from "lucide-react";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import FloMark from "./components/FloMark.jsx";
 import HomePage from "./pages/Home.jsx";
-import { creatorSocials, SITE } from "./site.js";
+import { creatorSocials, FEATURED_RELEASE, SITE } from "./site.js";
 import "./App.css";
 
 const PlayerGuidePage = lazy(() => import("./pages/PlayerGuide.jsx"));
+const CommunityPage = lazy(() => import("./pages/Community.jsx"));
 const RanksPage = lazy(() => import("./pages/Ranks.jsx"));
 const MapPage = lazy(() => import("./pages/Map.jsx"));
 const NotFoundPage = lazy(() => import("./pages/NotFound.jsx"));
 
 const ROUTE_META = {
   "/": {
-    title: "flottdotcom // Flotty's World 2.0",
-    description: "Flott / flottdotcom - live content, community, and Flotty's World 2.0 vanilla-first Minecraft survival.",
+    title: "Flott // Music, Streams & Everything FLO",
+    description: "Listen to 21 Days by Flott. Discover the music, Twitch streams, YouTube videos, TikTok clips, and community behind FLO. An album is on the way.",
+  },
+  "/community": {
+    title: "Community // FLO",
+    description: "Hang out with Flott's community on Discord and explore Flotty's World 2.0, our vanilla-first Minecraft survival server for Java and Bedrock.",
   },
   "/player-guide": {
     title: "Player Guide // Flotty's World 2.0",
@@ -30,7 +35,7 @@ const ROUTE_META = {
   },
 };
 
-const TICKER_ITEMS = ["[FLO]", SITE.brandName, SITE.serverName, SITE.serverIp, "VANILLA-FIRST", "NO PAY-TO-WIN"];
+const TICKER_ITEMS = ["[FLO]", `${FEATURED_RELEASE.title} — OUT NOW`, "MUSIC + CONTENT", SITE.brandName, "AN ALBUM ON THE WAY", "TWITCH / YOUTUBE / TIKTOK"];
 const TICKER_CYCLES = 8;
 
 function RouteEffects() {
@@ -49,11 +54,24 @@ function RouteEffects() {
     document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", meta.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", meta.description);
 
-    window.scrollTo(0, 0);
-    window.requestAnimationFrame(() => {
-      document.getElementById("main-content")?.focus({ preventScroll: true });
+    let targetId = "main-content";
+    try { targetId = decodeURIComponent(location.hash.slice(1)) || targetId; } catch { /* Malformed hashes return to the page start. */ }
+    const revealTarget = () => {
+      const target = document.getElementById(targetId);
+      if (!target) return false;
+      target.focus({ preventScroll: true });
+      if (targetId === "main-content") window.scrollTo(0, 0);
+      else target.scrollIntoView({ block: "start" });
+      return true;
+    };
+    // A section on a lazy route may mount after the route effect runs.
+    const observer = new MutationObserver(() => { if (revealTarget()) observer.disconnect(); });
+    const frame = window.requestAnimationFrame(() => {
+      if (!revealTarget()) observer.observe(document.getElementById("main-content"), { childList: true, subtree: true });
     });
-  }, [location.pathname]);
+    const timeout = window.setTimeout(() => observer.disconnect(), 5000);
+    return () => { window.cancelAnimationFrame(frame); observer.disconnect(); window.clearTimeout(timeout); };
+  }, [location.pathname, location.hash, location.key]);
 
   return null;
 }
@@ -65,7 +83,7 @@ function Header() {
 
   useEffect(() => {
     setOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -93,7 +111,7 @@ function Header() {
           {!isHome && (
             <span className="brand-copy">
               <strong>{SITE.brandName}</strong>
-              <small>{SITE.serverName} // creator + community</small>
+              <small>Music / Content / Community</small>
             </span>
           )}
         </Link>
@@ -110,13 +128,12 @@ function Header() {
         </button>
 
         <nav id="primary-navigation" className={`site-nav ${open ? "site-nav-open" : ""}`} aria-label="Primary navigation">
-          <NavLink to="/" onClick={close}>Home</NavLink>
-          <NavLink to="/player-guide" onClick={close}>Player Guide</NavLink>
-          <NavLink to="/ranks" onClick={close}>Ranks</NavLink>
-          <NavLink to="/map" onClick={close}>Map</NavLink>
-          <a href={SITE.discord} target="_blank" rel="noreferrer">Discord</a>
-          <a className="watch-link" href={SITE.twitch} target="_blank" rel="noreferrer">
-            <Radio size={14} /> Watch Live <ExternalLink size={12} />
+          {[['music', 'Music'], ['watch', 'Watch'], ['about', 'About']].map(([id, label]) => (
+            <Link key={id} to={`/#${id}`} onClick={close} className={isHome && (location.hash === `#${id}` || (!location.hash && id === 'music')) ? 'active' : undefined}>{label}</Link>
+          ))}
+          <NavLink to="/community" onClick={close}>Community</NavLink>
+          <a className="watch-link" href={FEATURED_RELEASE.url} target="_blank" rel="noreferrer">
+            <Headphones size={14} /> Listen <ExternalLink size={12} />
           </a>
         </nav>
       </div>
@@ -130,16 +147,21 @@ function Footer() {
       <div className="shell footer-grid">
         <div>
           <FloMark compact />
-          <p>{SITE.brandName} is Flott's creator hub and the home of {SITE.serverName}.</p>
+          <p>The music. The content. The person behind it all. This is FLO.</p>
         </div>
         <div className="footer-links" aria-label="Creator links">
           {creatorSocials.map((social) => (
             <a key={social.key} href={social.href} target="_blank" rel="noreferrer">{social.label}</a>
           ))}
+          <a href={SITE.links} target="_blank" rel="noreferrer">All links</a>
         </div>
         <div className="footer-meta">
-          <span>SERVER // {SITE.serverIp}</span>
-          <span>VANILLA-FIRST // COMMUNITY-BUILT</span>
+          <span>FLOTT // MUSIC + CONTENT</span>
+          <Link to="/community">Community</Link>
+          <Link to="/community#minecraft">Minecraft / Flotty's World</Link>
+          <Link to="/player-guide">Player Guide</Link>
+          <Link to="/ranks">Ranks &amp; Perks</Link>
+          <Link to="/map">World Map</Link>
         </div>
       </div>
     </footer>
@@ -179,6 +201,7 @@ export default function App() {
         <Suspense fallback={<div className="shell route-loading" role="status">Loading channel...</div>}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/community" element={<CommunityPage />} />
             <Route path="/player-guide" element={<PlayerGuidePage />} />
             <Route path="/ranks" element={<RanksPage />} />
             <Route path="/map" element={<MapPage />} />

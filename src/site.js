@@ -4,6 +4,7 @@ const javaAddress = configuredJavaAddress.replace(/:25565$/, "");
 export const SITE = {
   brandName: "FLOTTDOTCOM",
   creator: "Flott",
+  name: "Sage",
   handle: "flottdotcom",
   aliases: ["Flotto", "itsflott", "flott", "flottdotcom"],
   serverName: "Flotty's World 2.0",
@@ -12,8 +13,10 @@ export const SITE = {
   bedrockPort: Number(import.meta.env.VITE_BEDROCK_PORT || 19132),
   discord: "https://discord.gg/yJBHueFU6x",
   twitch: "https://www.twitch.tv/flottdotcom",
-  youtube: import.meta.env.VITE_YOUTUBE_URL || "",
-  tiktok: import.meta.env.VITE_TIKTOK_URL || "",
+  youtube: import.meta.env.VITE_YOUTUBE_URL || "https://www.youtube.com/@flottdotcom",
+  tiktok: import.meta.env.VITE_TIKTOK_URL || "https://www.tiktok.com/@flott.com",
+  links: "https://seemless.link/@Flottdotcom",
+  spotify: "https://open.spotify.com/artist/2nsBFSU8cvM1ZgdhqsfHoW",
   mapUrl: import.meta.env.VITE_MAP_URL || "http://74.112.77.32:8100",
   geyserConsoleGuide: "https://geysermc.org/wiki/geyser/using-geyser-with-consoles/",
   claimBlocks: {
@@ -23,7 +26,19 @@ export const SITE = {
   },
 };
 
+export const FEATURED_RELEASE = {
+  title: "21 Days",
+  type: "Debut single",
+  artist: "Flott",
+  artwork: "/21-days.jpg",
+  artworkAlt: "21 Days cover: handwritten FLO marks on a black background",
+  released: "2026-08-27",
+  url: "https://open.spotify.com/track/78zWy7lhrq4XXQusQhB2kp",
+  embedUrl: "https://open.spotify.com/embed/track/78zWy7lhrq4XXQusQhB2kp?utm_source=oembed",
+};
+
 export const creatorSocials = [
+  { key: "spotify", label: "Spotify", href: SITE.spotify },
   { key: "twitch", label: "Twitch", href: SITE.twitch },
   { key: "youtube", label: "YouTube", href: SITE.youtube },
   { key: "tiktok", label: "TikTok", href: SITE.tiktok },
