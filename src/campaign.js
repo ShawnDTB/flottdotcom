@@ -8,7 +8,7 @@ export const MUSIC_VIDEO = {
   label: "Official music video",
   url: "https://www.youtube.com/watch?v=oCTEwEzW6f4",
   embedUrl: "https://www.youtube-nocookie.com/embed/oCTEwEzW6f4",
-  thumbnail: "/21-days-video.jpg",
+  thumbnail: `${import.meta.env?.BASE_URL || "/"}21-days-video.jpg`,
   channel: "https://www.youtube.com/@itsflotto",
 };
 
@@ -20,7 +20,7 @@ export const RELEASE_PARTY = {
   location: "Midtown Atlanta",
   guests: ["c.will", "winnie black", "Tre.present"],
   rsvpUrl: import.meta.env?.VITE_PARTY_RSVP_URL || "",
-  calendarUrl: "/somewhere-in-somerdale-party.ics",
+  calendarUrl: `${import.meta.env?.BASE_URL || "/"}somewhere-in-somerdale-party.ics`,
 };
 
 export function getPartyState(now = Date.now()) {

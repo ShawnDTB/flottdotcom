@@ -39,6 +39,15 @@ npm run build
 node --test src/campaign.test.js
 ```
 
+## GitHub Pages preview
+
+The preview is published at https://shawndtb.github.io/flottdotcom/ by
+`.github/workflows/pages.yml` on pushes to `main`. Repository Settings → Pages →
+Source must be **GitHub Actions**, since the React source needs to be built first.
+`npm run build:pages` builds with the `/flottdotcom/` prefix and creates entry
+points for the community pages so direct links and refreshes work. The regular
+`npm run build` keeps root paths for the Cloudflare site.
+
 ## Configuration
 
 Site-wide links, `FEATURED_RELEASE`, rank data, server values, Bedrock connection details, and claim settings live in `src/site.js`. Update the featured release there when the album arrives. The official 21 Days cover is saved in `public/21-days.jpg` from Spotify's release metadata. Baseline social-sharing metadata lives in `index.html`; update it alongside a future release change.

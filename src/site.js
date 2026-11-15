@@ -30,7 +30,7 @@ export const FEATURED_RELEASE = {
   title: "21 Days",
   type: "Debut single",
   artist: "Flott",
-  artwork: "/21-days.jpg",
+  artwork: `${import.meta.env.BASE_URL}21-days.jpg`,
   artworkAlt: "21 Days cover: handwritten FLO marks on a black background",
   released: "2026-08-27",
   url: "https://open.spotify.com/track/78zWy7lhrq4XXQusQhB2kp",

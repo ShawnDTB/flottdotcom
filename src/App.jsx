@@ -43,7 +43,8 @@ function RouteEffects() {
   const location = useLocation();
 
   useEffect(() => {
-    const meta = ROUTE_META[location.pathname] || {
+    const pathname = location.pathname.replace(/\/+$/, "") || "/";
+    const meta = ROUTE_META[pathname] || {
       title: `Page Not Found // ${SITE.brandName.toLowerCase()}`,
       description: `Return to ${SITE.brandName}, Flott's creator hub and the home of ${SITE.serverName}.`,
     };
