@@ -1,0 +1,101 @@
+.campaign-hero { --campaign-green: #c4f58a; --campaign-pink: #edb5d4; padding: 38px 0 0; background: radial-gradient(ellipse at 92% 28%, #1e2b174f, transparent 45%), #080908; }
+.campaign-eyebrow { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 44px; font: 10px "DM Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.campaign-eyebrow > span:first-child { display: inline-flex; align-items: center; gap: 12px; }
+.campaign-eyebrow > span:last-child { color: var(--campaign-green); }
+.campaign-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, .8fr); align-items: center; gap: 52px; padding-bottom: 55px; }
+.campaign-copy .flo-mark { font-size: clamp(56px, 6vw, 82px); }
+.campaign-copy h1 { font-size: clamp(44px, 5.7vw, 84px); line-height: .94; letter-spacing: -.065em; margin: 32px 0 25px; font-weight: 900; }
+.title-connector { color: var(--campaign-green); }
+.campaign-period { color: var(--campaign-pink); }
+.campaign-copy p { max-width: 560px; font-size: 16px; }
+.campaign-copy .campaign-lead { font-size: 22px; color: var(--text); margin-bottom: 12px; letter-spacing: -.025em; }
+.campaign-hero .campaign-primary { background: var(--campaign-green); border-color: var(--campaign-green); }
+.campaign-hero .campaign-primary:hover { background: var(--text); border-color: var(--text); }
+.campaign-index { display: flex; gap: 22px; margin-top: 35px; color: var(--muted); font: 9px "DM Mono", monospace; letter-spacing: .05em; flex-wrap: wrap; }
+.campaign-strip { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding: 22px 0; font: 11px "DM Mono", monospace; color: var(--muted); letter-spacing: .09em; }
+.campaign-strip span:last-child { color: var(--campaign-green); }
+.party-pass { display: block; background: #d9e2bc; color: #182012; border: 1px solid #c5cda9; box-shadow: 10px 10px 0 #283220; transform: rotate(2deg); transition: transform .2s, box-shadow .2s; }
+.party-pass:hover { transform: rotate(0deg); box-shadow: 6px 6px 0 #38472c; }
+.pass-top { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid #28322055; font: 11px "DM Mono", monospace; }
+.pass-tag { display: table; margin: 23px auto 0; font: 11px "DM Mono", monospace; letter-spacing: .13em; background: #edb5d4; border: 1px solid #182012; padding: 7px 14px; transform: rotate(-3deg); }
+.pass-date { display: grid; justify-items: center; padding: 20px 15px 24px; }
+.pass-date > span:first-child { font-size: 30px; font-weight: 900; letter-spacing: .25em; padding-left: .25em; }
+.pass-date strong { font-size: clamp(100px, 10vw, 146px); font-weight: 900; line-height: .95; letter-spacing: -.08em; padding-right: .08em; }
+.pass-date > span:last-child { margin-top: 15px; font: 10px "DM Mono", monospace; letter-spacing: .16em; }
+.pass-rule { margin: 0 18px; border-top: 1px dashed #18201288; }
+.pass-bottom { padding: 24px 22px; display: grid; gap: 12px; }
+.pass-bottom > strong { font-size: 27px; line-height: .95; letter-spacing: -.04em; }
+.pass-bottom > span, .pass-bottom > div { font: 10px "DM Mono", monospace; }
+.pass-bottom > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-block: 12px; }
+.pass-admission { display: flex; justify-content: space-between; align-items: center; gap: 5px; }
+.pass-admission > span { font-size: 18px; }
+.pass-countdown { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #182012; color: #d9e2bc; padding: 17px 22px; font: 11px "DM Mono", monospace; }
+.music-video-section { background: #111; }
+.video-premiere { border: 1px solid var(--line); background: #070707; }
+.video-stage { aspect-ratio: 16 / 9; background: #030303; }
+.video-stage iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video-poster { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; overflow: hidden; cursor: pointer; background: #090909; text-align: left; }
+.video-poster img { width: 100%; height: 100%; object-fit: cover; }
+.video-poster::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, #000c, #0000 55%); pointer-events: none; }
+.video-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; border-radius: 50%; background: #c4f58a; color: #10160b; display: grid; place-items: center; z-index: 1; transition: background .2s; }
+.video-poster:hover .video-play { background: white; }
+.video-poster-label { position: absolute; bottom: 32px; left: 32px; font-size: clamp(30px, 5vw, 64px); font-weight: 900; line-height: 1; letter-spacing: -.05em; z-index: 1; }
+.video-poster-label > span { display: block; margin-top: 12px; font: 10px "DM Mono", monospace; letter-spacing: .12em; }
+.single-listening-bar { display: flex; align-items: center; gap: 20px; padding-top: 26px; }
+.single-listening-bar > img { border: 1px solid var(--line); flex: 0 0 auto; }
+.single-listening-bar > div { display: grid; gap: 8px; }
+.single-listening-bar > div > span { color: var(--muted); font: 10px "DM Mono", monospace; }
+.single-listening-bar strong { font-size: 19px; }
+.single-listening-bar strong span { color: var(--muted); font-weight: 400; }
+.single-listening-bar .btn { margin-left: auto; }
+.party-section { background: #d9e2bc; color: #182012; }
+.party-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.party-section .section-label { color: #455137; }
+.party-copy h2 { font-size: clamp(48px, 6vw, 88px); margin-bottom: 30px; }
+.party-copy h2 span { color: #536b3a; }
+.party-copy p { color: #3f4a34; max-width: 470px; }
+.party-copy .party-album-title { color: #182012; font-size: 24px; line-height: 1.2; font-weight: 800; letter-spacing: -.035em; }
+.party-countdown { display: inline-flex; align-items: center; gap: 12px; margin-top: 20px; padding: 12px 14px; border: 1px solid #718257; font: 11px "DM Mono", monospace; }
+.party-countdown .live-dot { background: #536b3a; box-shadow: none; }
+.party-detail { display: flex; gap: 18px; padding: 19px 0; border-bottom: 1px solid #71825766; }
+.party-detail:first-child { border-top: 1px solid #71825766; }
+.party-detail > svg { flex: 0 0 auto; margin-top: 3px; }
+.party-detail > div > span, .party-lineup > span { display: block; font: 10px "DM Mono", monospace; letter-spacing: .12em; color: #455137; margin-bottom: 8px; }
+.party-detail strong { display: block; font-size: 20px; line-height: 1.4; }
+.party-detail p { margin: 5px 0 0; color: #455137; font-size: 14px; }
+.party-lineup { padding-top: 22px; }
+.party-lineup > div { display: flex; flex-wrap: wrap; gap: 10px; }
+.party-lineup strong { padding: 7px 11px; border: 1px solid #71825788; font-size: 14px; }
+.party-lineup strong:first-child { background: #edb5d4; border-color: #b4839e; }
+.party-section .btn { color: #182012; border-color: #182012; font-size: 11px; }
+.party-section .btn-solid { background: #182012; color: #f3f3ef; }
+.party-section .btn:hover { background: #edb5d4; color: #182012; }
+.party-details .party-rsvp-note { font-size: 12px; color: #455137; margin: 16px 0 0; }
+.party-section :focus-visible, .party-pass:focus-visible { outline-color: #182012; }
+@media (max-width: 1100px) {
+  .campaign-grid { gap: 30px; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+  .campaign-copy h1 { font-size: clamp(40px, 5.7vw, 66px); }
+  .party-layout { gap: 40px; }
+}
+@media (max-width: 700px) {
+  .campaign-hero { padding-top: 25px; }
+  .campaign-eyebrow { flex-wrap: wrap; gap: 10px; margin-bottom: 32px; font-size: 9px; }
+  .campaign-grid { grid-template-columns: 1fr; gap: 42px; }
+  .campaign-copy h1 { font-size: clamp(35px, 8.8vw, 60px); }
+  .campaign-copy .campaign-lead { font-size: 20px; }
+  .campaign-copy .hero-actions .btn { flex: 1 1 100%; font-size: 12px; }
+  .campaign-index { font-size: 8px; gap: 12px; }
+  .party-pass { width: calc(100% - 20px); max-width: 390px; justify-self: center; transform: rotate(1deg); }
+  .pass-date strong { font-size: 120px; }
+  .campaign-strip { font-size: 9px; line-height: 1.6; justify-content: start; gap: 8px 16px; }
+  .party-layout { grid-template-columns: 1fr; gap: 30px; }
+  .party-copy h2 { margin-bottom: 20px; }
+  .video-premiere .broadcast-card-top { flex-wrap: wrap; gap: 8px; font-size: 9px; }
+  .video-play { width: 54px; height: 54px; }
+  .video-play svg { width: 20px; }
+  .video-poster-label { left: 16px; bottom: 16px; font-size: 25px; }
+  .video-poster-label > span { font-size: 8px; margin-top: 6px; }
+  .single-listening-bar { flex-wrap: wrap; gap: 14px; }
+  .single-listening-bar .btn { margin-left: 0; width: 100%; font-size: 12px; }
+  .party-section .hero-actions .btn { flex-basis: 100%; }
+}

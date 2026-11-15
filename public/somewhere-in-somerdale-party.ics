@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//FLO//Somewhere in Somerdale//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:somewhere-in-somerdale-20261128@flottdotcom
+DTSTAMP:20261115T170000Z
+DTSTART:20261129T010000Z
+DTEND:20261129T040000Z
+SUMMARY:Flott - Somewhere in Somerdale album release party
+LOCATION:Midtown Atlanta
+DESCRIPTION:Flott with guests c.will\, winnie black\, and Tre.present.\n
+ Free entry. RSVP on Partiful. Check the official invite for venue details.
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

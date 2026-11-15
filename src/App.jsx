@@ -1,9 +1,11 @@
-import { ExternalLink, Headphones, Menu, X } from "lucide-react";
+import { Menu, Ticket, X } from "lucide-react";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import FloMark from "./components/FloMark.jsx";
 import HomePage from "./pages/Home.jsx";
-import { creatorSocials, FEATURED_RELEASE, SITE } from "./site.js";
+import { creatorSocials, SITE } from "./site.js";
+import { ALBUM } from "./campaign.js";
+import usePartyState from "./usePartyState.js";
 import "./App.css";
 
 const PlayerGuidePage = lazy(() => import("./pages/PlayerGuide.jsx"));
@@ -14,8 +16,8 @@ const NotFoundPage = lazy(() => import("./pages/NotFound.jsx"));
 
 const ROUTE_META = {
   "/": {
-    title: "Flott // Music, Streams & Everything FLO",
-    description: "Listen to 21 Days by Flott. Discover the music, Twitch streams, YouTube videos, TikTok clips, and community behind FLO. An album is on the way.",
+    title: "Somewhere in Somerdale // Flott",
+    description: "The next chapter from Flott. Somewhere in Somerdale is on the way. Watch the official 21 Days music video and explore the November 28, 2026 album release party in Midtown Atlanta.",
   },
   "/community": {
     title: "Community // FLO",
@@ -35,7 +37,6 @@ const ROUTE_META = {
   },
 };
 
-const TICKER_ITEMS = ["[FLO]", `${FEATURED_RELEASE.title} — OUT NOW`, "MUSIC + CONTENT", SITE.brandName, "AN ALBUM ON THE WAY", "TWITCH / YOUTUBE / TIKTOK"];
 const TICKER_CYCLES = 8;
 
 function RouteEffects() {
@@ -128,13 +129,13 @@ function Header() {
         </button>
 
         <nav id="primary-navigation" className={`site-nav ${open ? "site-nav-open" : ""}`} aria-label="Primary navigation">
-          {[['music', 'Music'], ['watch', 'Watch'], ['about', 'About']].map(([id, label]) => (
+          {[['music', 'Music'], ['video', 'Video'], ['watch', 'Watch'], ['about', 'About']].map(([id, label]) => (
             <Link key={id} to={`/#${id}`} onClick={close} className={isHome && (location.hash === `#${id}` || (!location.hash && id === 'music')) ? 'active' : undefined}>{label}</Link>
           ))}
           <NavLink to="/community" onClick={close}>Community</NavLink>
-          <a className="watch-link" href={FEATURED_RELEASE.url} target="_blank" rel="noreferrer">
-            <Headphones size={14} /> Listen <ExternalLink size={12} />
-          </a>
+          <Link className="watch-link" to="/#party" onClick={close}>
+            <Ticket size={14} /> Release party
+          </Link>
         </nav>
       </div>
     </header>
@@ -168,11 +169,11 @@ function Footer() {
   );
 }
 
-function TickerGroup() {
+function TickerGroup({ items }) {
   return (
     <div className="ticker-group">
       {Array.from({ length: TICKER_CYCLES }, (_, cycle) => (
-        TICKER_ITEMS.map((item, itemIndex) => (
+        items.map((item, itemIndex) => (
           <span key={`${cycle}-${itemIndex}`}>{item}</span>
         ))
       ))}
@@ -181,11 +182,13 @@ function TickerGroup() {
 }
 
 function StatusTicker() {
+  const party = usePartyState();
+  const items = ["[FLO]", ALBUM.title, "21 DAYS / OFFICIAL VIDEO OUT NOW", party.phase === "past" ? "SAME FLOTT. NEXT CHAPTER." : "NOV 28 / MIDTOWN ATL / 8–11 PM ET", party.phase === "past" ? "MUSIC + CONTENT" : "RELEASE PARTY / FREE ENTRY"];
   return (
     <div className="status-ticker" aria-hidden="true">
       <div className="ticker-track">
-        <TickerGroup />
-        <TickerGroup />
+        <TickerGroup items={items} />
+        <TickerGroup items={items} />
       </div>
     </div>
   );

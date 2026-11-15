@@ -2,7 +2,7 @@
 
 Official web home for **Flott / flottdotcom**: music, streams, videos, and everything FLO.
 
-The homepage leads with **21 Days**, followed by Twitch, YouTube, TikTok, an introduction to Sage, and the community. The `/community` page houses Discord and Flotty's World 2.0, with the existing `/player-guide`, `/ranks`, and `/map` URLs preserved.
+The homepage leads with **Somewhere in Somerdale**, the **21 Days official music video**, and the **November 28, 2026 album release party**. Twitch, YouTube, TikTok, an introduction to Sage, and the community follow. The `/community` page houses Discord and Flotty's World 2.0, with the existing `/player-guide`, `/ranks`, and `/map` URLs preserved.
 
 ## Direction
 
@@ -36,13 +36,18 @@ npm run dev
 ```bash
 npm run lint
 npm run build
+node --test src/campaign.test.js
 ```
 
 ## Configuration
 
 Site-wide links, `FEATURED_RELEASE`, rank data, server values, Bedrock connection details, and claim settings live in `src/site.js`. Update the featured release there when the album arrives. The official 21 Days cover is saved in `public/21-days.jpg` from Spotify's release metadata. Baseline social-sharing metadata lives in `index.html`; update it alongside a future release change.
 
-Spotify and Twitch players load only after a visitor chooses to open them. Direct listening and channel links remain available independently of the embeds.
+Album, video, and party information lives in `src/campaign.js`. The event time is explicitly set to Eastern Time (Atlanta), and its countdown and attendance prompts change when the event starts and ends. The album remains “on the way” until its release is confirmed; the party date is not automatically treated as its streaming release date.
+
+YouTube and Twitch players load only after a visitor chooses to open them. Direct Spotify, YouTube, and Twitch links remain available independently of the embeds. The music video is on Flott's artist channel (`@itsflotto`); the existing creator channel (`@flottdotcom`) is retained for other videos.
+
+Set `VITE_PARTY_RSVP_URL` to the confirmed Partiful event URL to enable the RSVP button. Until then, the site shows a clearly labeled Discord updates link and points to the invite on Flott's socials. It does not use a guessed RSVP address. The calendar download is `public/somewhere-in-somerdale-party.ics`; update it alongside event date/time changes. A calendar download does not reserve a place.
 
 Current defaults:
 
