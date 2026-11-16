@@ -12,7 +12,7 @@ The homepage leads with **Somewhere in Somerdale**, the **21 Days official music
 - Black / off-white late-night broadcast aesthetic
 - `[FLO]` as the shared identity mark
 - Vanilla-first Minecraft survival messaging
-- Quality-of-life supporter perks, never pay-to-win power
+- Cosmetic supporter perks and equal land-claim accrual for every rank
 - Clear separation between supporter ranks and staff authority
 - Official release artwork and listening links, with an album on the way
 

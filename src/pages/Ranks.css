@@ -12,32 +12,27 @@
 .ranks-hero + .section { background: #111111; }
 
 .rank-card-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line); }
-.rank-card { min-height: 440px; min-width: 0; background: #151515; border-right: 1px solid var(--line); display: flex; flex-direction: column; }
+.rank-card { min-width: 0; background: #151515; border-right: 1px solid var(--line); }
 .rank-card:last-child { border-right: 0; }
 .rank-card-mono { border-top: 4px solid var(--text); }
 .rank-card-red { border-top: 4px solid var(--red); }
 .rank-card-orange { border-top: 4px solid var(--orange); }
 .rank-card-gold { border-top: 4px solid var(--gold); }
 .rank-card-lime { border-top: 4px solid var(--lime); }
-.rank-card-top, .rank-card-bottom { padding: 20px; }
-.rank-card-top { display: grid; gap: 12px; }
-.rank-card-top > span, .rank-card-bottom > span { color: var(--muted); font: 10px "DM Mono", ui-monospace, monospace; text-transform: uppercase; }
+.rank-card-top { padding: 20px; display: grid; gap: 12px; }
+.rank-card-top > span { color: var(--muted); font: 10px "DM Mono", ui-monospace, monospace; text-transform: uppercase; }
 .rank-card-top > strong { font-size: 30px; letter-spacing: -.04em; }
-.rank-card-perks { padding: 0 20px; display: grid; gap: 0; }
+.rank-card-perks { padding: 0 20px 12px; display: grid; gap: 0; }
 .rank-card-perks > div { display: grid; grid-template-columns: 16px 1fr; gap: 8px; padding: 11px 0; border-top: 1px solid var(--line); color: #c7c7c0; font-size: 12px; line-height: 1.45; }
 .rank-card-perks svg { color: var(--muted); margin-top: 2px; }
-.rank-card-bottom { margin-top: auto; border-top: 1px solid var(--line); display: flex; align-items: end; justify-content: space-between; gap: 10px; background: #111; }
-.rank-card-bottom strong { font-size: 18px; }
 
 .claim-rank-section { background: #090909; }
 .rank-split { display: grid; grid-template-columns: .85fr 1.15fr; gap: 66px; align-items: start; }
-.claim-rank-table-wrap { min-width: 0; overflow-x: auto; border: 1px solid var(--line); }
-.claim-rank-table { width: 100%; min-width: 560px; border-collapse: collapse; text-align: left; }
-.claim-rank-table th, .claim-rank-table td { padding: 15px 16px; border-bottom: 1px solid var(--line); font-size: 13px; }
-.claim-rank-table thead th { background: #161616; color: var(--muted); font: 10px "DM Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: .04em; }
-.claim-rank-table tbody th { color: var(--text); }
-.claim-rank-table tbody td { color: var(--muted); }
-.claim-rank-table tbody tr:last-child th, .claim-rank-table tbody tr:last-child td { border-bottom: 0; }
+.claim-rank-stats { margin: 0; padding: 0 16px; border: 1px solid var(--line); background: #141414; }
+.claim-rank-stats > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 15px 0; }
+.claim-rank-stats > div + div { border-top: 1px solid var(--line); }
+.claim-rank-stats dt { color: var(--muted); font: 11px "DM Mono", ui-monospace, monospace; text-transform: uppercase; }
+.claim-rank-stats dd { margin: 0; font-size: 14px; font-weight: 700; text-align: right; }
 
 .paid-promise-section { background: var(--text); color: var(--bg); }
 .paid-promise-section .section-label, .paid-promise-section p { color: #555; }
@@ -70,17 +65,7 @@
     letter-spacing: -.055em;
   }
   .rank-card-grid { grid-template-columns: 1fr; }
-  .rank-card { min-height: auto; border-right: 0; }
-  .rank-card-bottom { min-height: 74px; }
-
-  .claim-rank-table-wrap { overflow: visible; border: 0; }
-  .claim-rank-table, .claim-rank-table tbody, .claim-rank-table tr, .claim-rank-table th, .claim-rank-table td { display: block; width: 100%; min-width: 0; }
-  .claim-rank-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
-  .claim-rank-table tbody { display: grid; gap: 10px; }
-  .claim-rank-table tbody tr { border: 1px solid var(--line); background: #141414; }
-  .claim-rank-table tbody th, .claim-rank-table tbody td { display: grid; grid-template-columns: minmax(120px, .9fr) 1.1fr; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
-  .claim-rank-table tbody th::before, .claim-rank-table tbody td::before { content: attr(data-label); color: var(--muted); font: 10px "DM Mono", ui-monospace, monospace; text-transform: uppercase; }
-  .claim-rank-table tbody tr > :last-child { border-bottom: 0; }
+  .rank-card { border-right: 0; }
 
   .no-power-grid { grid-template-columns: 1fr; }
   .no-power-grid > div:nth-child(odd) { border-right: 0; }

@@ -68,14 +68,13 @@ export default function CommunityPage() {
           <div className="section-label">HOW FINE ARE YOU?</div>
           <div className="home-heading-row">
             <h2>RANKS THAT REWARD<br />WITHOUT BREAKING SURVIVAL.</h2>
-            <p>Everyone gets the core server. Community regulars and Twitch supporters gain identity, cosmetic options, utility, and more room to protect what they build.</p>
+            <p>Everyone gets the same survival tools. Community regulars and Twitch supporters can personalize how they appear in game.</p>
           </div>
           <div className="rank-preview-grid">
             {supporterRanks.map((rank) => (
               <article key={rank.key} className={`rank-preview-card rank-${rank.accent}`}>
                 <small>{rank.label}</small>
                 <strong>{rank.name}</strong>
-                <span>{rank.totalBonus ? `+${rank.totalBonus.toLocaleString()} rank claim blocks` : "core survival rank"}</span>
               </article>
             ))}
           </div>
@@ -86,9 +85,9 @@ export default function CommunityPage() {
       <section className="section claim-feature">
         <div className="shell claim-feature-grid">
           <div>
-          <div className="section-label">YOUR LAND. YOUR TIME.</div>
+            <div className="section-label">YOUR LAND. YOUR TIME.</div>
             <h2>CLAIM MORE BY<br />ACTUALLY PLAYING.</h2>
-            <p>Claim blocks protect builds; they do not make anyone stronger. Everyone earns them naturally, while community and supporter ranks add more room without selling combat advantages.</p>
+            <p>Every rank starts with the same claim balance and earns claim blocks at the same rate through active play.</p>
           </div>
           <div className="claim-numbers">
             <div><span>START</span><strong>{SITE.claimBlocks.starting.toLocaleString()}</strong><small>claim blocks</small></div>

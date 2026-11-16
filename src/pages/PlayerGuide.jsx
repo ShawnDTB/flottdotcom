@@ -147,8 +147,8 @@ export default function PlayerGuidePage() {
               </div>
             </div>
             <aside className="guide-note">
-              <div className="section-label">IMPORTANT</div>
-              <p>Supporter ranks can add claim-block capacity. Claim blocks protect land; they never change combat, loot, or survival progression.</p>
+              <div className="section-label">CLAIM ACCRUAL LIMIT</div>
+              <p>Every rank can accrue up to {SITE.claimBlocks.maxAccrued.toLocaleString()} claim blocks through active play.</p>
             </aside>
           </div>
         </div>

@@ -41,9 +41,9 @@
 
 .ranks-preview-section { background: #090909; }
 .rank-preview-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line); }
-.rank-preview-card { min-height: 190px; min-width: 0; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); background: #141414; }
+.rank-preview-card { min-width: 0; padding: 20px; display: grid; align-content: start; gap: 14px; border-right: 1px solid var(--line); background: #141414; }
 .rank-preview-card:last-child { border-right: 0; }
-.rank-preview-card small, .rank-preview-card span { color: var(--muted); font: 10px "DM Mono", ui-monospace, monospace; text-transform: uppercase; line-height: 1.45; }
+.rank-preview-card small { color: var(--muted); font: 10px "DM Mono", ui-monospace, monospace; text-transform: uppercase; line-height: 1.45; }
 .rank-preview-card strong { font-size: 25px; letter-spacing: -.04em; }
 .rank-red { border-top: 3px solid var(--red); }
 .rank-orange { border-top: 3px solid var(--orange); }
