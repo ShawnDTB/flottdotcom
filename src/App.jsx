@@ -25,15 +25,15 @@ const ROUTE_META = {
   },
   "/player-guide": {
     title: "Player Guide // Flotty's World 2.0",
-    description: "Join Flotty's World 2.0 from Java or Bedrock, then learn homes, TPA, claims, public warps, Discord linking, and core commands.",
+    description: "Join Flotty's World 2.0 from Java or Bedrock, then learn homes, player teleports, claims, and Discord linking.",
   },
   "/ranks": {
     title: "Ranks & Perks // Flotty's World 2.0",
     description: "Compare [FLO], UNFINE, FINE, FINER, and FINEST perks while keeping Flotty's World 2.0 vanilla-first and fair.",
   },
   "/map": {
-    title: "Live World Map // Flotty's World 2.0",
-    description: "Open the live BlueMap for Flotty's World 2.0 and follow how the community builds outward.",
+    title: "World Map // Flotty's World 2.0",
+    description: "Find the world map for Flotty's World 2.0 when it is available, or get help finding your way around.",
   },
 };
 

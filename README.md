@@ -62,9 +62,7 @@ Current defaults:
 
 - Java: `74.112.77.32:25565`
 - Bedrock/Geyser: `74.112.77.32:19132`
-- BlueMap: `http://74.112.77.32:8100`
-
-The BlueMap IP endpoint is temporary and can be replaced with a domain later without changing page components.
+- World map: the site shows an unavailable message while no public map URL is configured.
 
 Optional build-time environment variables:
 
@@ -72,10 +70,12 @@ Optional build-time environment variables:
 VITE_SERVER_HOST=play.example.com
 VITE_SERVER_IP=play.example.com:25565
 VITE_BEDROCK_PORT=19132
-VITE_MAP_URL=https://map.example.com
+VITE_MC_MAP_URL=https://map.example.com
 VITE_YOUTUBE_URL=https://www.youtube.com/@yourhandle
 VITE_TIKTOK_URL=https://www.tiktok.com/@yourhandle
 ```
+
+Set `VITE_MC_MAP_URL` when the public map returns. The existing `VITE_MAP_URL` variable also works. A map served over HTTPS can be displayed inside the site.
 
 Spotify, Twitch, YouTube (`@flottdotcom`), TikTok (`@flott.com`), Discord, and the Seemless link hub use confirmed destinations. YouTube and TikTok can still be overridden with the environment variables above.
 

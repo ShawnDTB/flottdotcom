@@ -9,13 +9,14 @@
   white-space: nowrap;
 }
 .guide-hero-copy { max-width: 760px; font-size: 18px; margin: 28px 0 0; }
-.guide-hero + .section { background: #111111; }
-.guide-start-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); }
-.guide-step { min-height: 220px; min-width: 0; padding: 22px; border-right: 1px solid var(--line); display: flex; flex-direction: column; background: #0d0d0d; }
-.guide-step:last-child { border-right: 0; }
-.guide-step > span { font: 12px "DM Mono", ui-monospace, monospace; color: var(--red); }
-.guide-step strong { font-size: 22px; margin-top: auto; }
-.guide-step p { font-size: 13px; margin: 10px 0 0; overflow-wrap: anywhere; }
+.first-session { background: #111111; }
+.guide-start-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--line); background: var(--line); }
+.guide-step { min-width: 0; padding: 22px; background: #0d0d0d; }
+.guide-step h3 { margin-bottom: 10px; }
+.guide-step p { font-size: 14px; margin: 0; }
+.guide-step code { color: var(--lime); }
+.step-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; text-decoration: underline; text-underline-offset: .25em; }
+.step-link:hover { color: var(--lime); }
 .guide-two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 
 .crossplay-section { background: #090909; }
@@ -29,16 +30,12 @@
 .platform-card-top svg { color: var(--red); flex: 0 0 auto; }
 .platform-card-top span { font: 10px "DM Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; }
 .platform-card h3 { margin: 54px 0 10px; font-size: 24px; }
-.platform-card p { font-size: 13px; margin-bottom: 24px; }
-.platform-card p strong { color: var(--text); }
+.platform-card p { font-size: 14px; margin-bottom: 24px; }
+.platform-card p strong { color: var(--text); overflow-wrap: anywhere; }
 .platform-details { display: grid; gap: 1px; margin-top: auto; background: var(--line); border: 1px solid var(--line); }
-.platform-details > div { min-width: 0; padding: 13px 14px; background: #0b0b0b; display: grid; gap: 5px; }
-.platform-details span { color: var(--muted); font: 9px "DM Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; }
-.platform-details code { color: var(--lime); font-size: 13px; overflow-wrap: anywhere; }
 .platform-card-console .btn { margin-top: auto; align-self: flex-start; }
-.crossplay-note { margin-top: 16px; padding: 16px 18px; border: 1px solid var(--line); background: #111; display: grid; grid-template-columns: 140px 1fr; gap: 18px; align-items: start; }
-.crossplay-note strong { font: 11px "DM Mono", ui-monospace, monospace; color: var(--gold); }
-.crossplay-note span { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.join-help { margin-top: 18px; padding: 14px 18px; border: 1px solid var(--line); background: #111; display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; justify-content: space-between; }
+.join-help p { font-size: 14px; margin: 0; }
 
 .claims-section { background: #111111; }
 .claim-flow { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 30px; }
@@ -70,10 +67,8 @@
 .guide-bottom-cta code { color: var(--lime); }
 
 @media (max-width: 980px) {
-  .guide-start-grid { grid-template-columns: 1fr 1fr; }
-  .guide-step:nth-child(2) { border-right: 0; }
-  .guide-step { border-bottom: 1px solid var(--line); }
   .guide-two-column, .command-group-grid, .crossplay-heading { grid-template-columns: 1fr; }
+  .crossplay-heading { gap: 14px; }
   .guide-note { position: static; }
   .command-group-grid { gap: 12px; }
   .platform-grid { grid-template-columns: 1fr; }
@@ -94,13 +89,11 @@
 @media (max-width: 650px) {
   .guide-hero { padding-top: 58px; background: linear-gradient(180deg, #080808 0%, #0b0b0b 100%); }
   .guide-start-grid { grid-template-columns: 1fr; }
-  .guide-step { min-height: 170px; border-right: 0; }
-  .guide-step:nth-child(2) { border-right: 0; }
   .staff-list > div { grid-template-columns: 1fr; gap: 6px; }
   .claim-flow > div { grid-template-columns: 28px 1fr; padding: 16px; }
   .guide-bottom-cta { grid-template-columns: 1fr; }
   .guide-bottom-cta > .btn { justify-self: start; }
   .platform-card { padding: 20px; }
   .platform-card-console .btn { align-self: stretch; }
-  .crossplay-note { grid-template-columns: 1fr; gap: 8px; }
+  .join-help .btn { width: 100%; }
 }

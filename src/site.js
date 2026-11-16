@@ -17,12 +17,12 @@ export const SITE = {
   tiktok: import.meta.env.VITE_TIKTOK_URL || "https://www.tiktok.com/@flott.com",
   links: "https://seemless.link/@Flottdotcom",
   spotify: "https://open.spotify.com/artist/2nsBFSU8cvM1ZgdhqsfHoW",
-  mapUrl: import.meta.env.VITE_MAP_URL || "http://74.112.77.32:8100",
+  mapUrl: import.meta.env.VITE_MC_MAP_URL || import.meta.env.VITE_MAP_URL || "",
   geyserConsoleGuide: "https://geysermc.org/wiki/geyser/using-geyser-with-consoles/",
   claimBlocks: {
     starting: 1000,
-    perHour: 150,
-    maxAccrued: 40000,
+    perHour: 100,
+    maxAccrued: 10000,
   },
 };
 
@@ -56,10 +56,9 @@ export const supporterRanks = [
     perks: [
       "1 home",
       "TPA requests and responses",
-      "Use public server warps",
       "Land claims",
-      "1,000 starting claim blocks",
-      "+150 claim blocks per active hour",
+      `${SITE.claimBlocks.starting.toLocaleString()} starting claim blocks`,
+      `+${SITE.claimBlocks.perHour} claim blocks per active hour`,
     ],
   },
   {

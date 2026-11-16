@@ -1,97 +1,58 @@
-import { ExternalLink, MapPinned, MessageCircle, Server } from "lucide-react";
+import { ExternalLink, MapPinned, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 import { SITE } from "../site.js";
 import "./Map.css";
 
 export default function MapPage() {
-  const configured = Boolean(SITE.mapUrl);
-  const mapLabel = SITE.mapUrl.replace(/^https?:\/\//, "").replace(/\/$/, "");
-  const mixedContentBlocked = typeof window !== "undefined"
-    && window.location.protocol === "https:"
-    && SITE.mapUrl.startsWith("http://");
-  const canEmbed = configured && !mixedContentBlocked;
+  const { mapUrl } = SITE;
+  const canEmbed = mapUrl.startsWith("https://");
 
   return (
     <main className="page-main map-page">
       <section className="map-primary">
         <div className="shell map-primary-header">
           <div className="map-primary-copy">
-            <div className="section-label">WORLD MAP // {SITE.serverName}</div>
-            <h1 className="display-title">EXPLORE THE WORLD.</h1>
-            <p>BlueMap follows the real survival world as it grows - builds, roads, community areas, terrain, and everything in between.</p>
+            <div className="section-label">{SITE.serverName}</div>
+            <h1 className="display-title">WORLD MAP</h1>
+            {mapUrl && <p>Explore the terrain and get your bearings before heading out in survival.</p>}
           </div>
-
-          <div className="map-primary-meta">
-            <div className="map-status-block">
-              <span className="map-status-line"><i className="map-live-dot" /> {configured ? "LIVE" : "OFFLINE"}</span>
-              <strong>{configured ? mapLabel : SITE.serverIp}</strong>
-            </div>
-            {configured ? (
-              <a className="btn" href={SITE.mapUrl} target="_blank" rel="noreferrer">
-                OPEN FULLSCREEN <ExternalLink size={14} />
-              </a>
-            ) : (
-              <a className="btn" href={SITE.discord} target="_blank" rel="noreferrer">
-                <MessageCircle size={15} /> CHECK DISCORD
-              </a>
-            )}
-          </div>
+          {mapUrl && (
+            <a className="btn" href={mapUrl} target="_blank" rel="noreferrer">
+              OPEN WORLD MAP <ExternalLink size={14} />
+            </a>
+          )}
         </div>
 
-        {configured && canEmbed ? (
-          <div className="map-wide map-frame-shell">
-            <div className="map-frame-toolbar">
-              <span><i className="map-live-dot" /> LIVE WORLD VIEW</span>
-              <span className="map-frame-toolbar-right">
-                <span>{mapLabel}</span>
-                <a href={SITE.mapUrl} target="_blank" rel="noreferrer" aria-label="Open the live map fullscreen">
-                  FULLSCREEN <ExternalLink size={12} />
-                </a>
-              </span>
-            </div>
+        {canEmbed && (
+          <div className="map-frame-shell">
             <iframe
               className="map-frame"
-              title={`${SITE.serverName} live BlueMap`}
-              src={SITE.mapUrl}
+              title={`${SITE.serverName} world map`}
+              src={mapUrl}
               loading="eager"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
           </div>
-        ) : configured ? (
-          <div className="shell">
-            <div className="map-embed-fallback">
-              <Server size={34} />
-              <div>
-                <strong>THE MAP IS LIVE, BUT THIS PAGE CAN'T FRAME IT YET.</strong>
-                <p>The temporary BlueMap address uses HTTP. Browsers block an HTTP iframe when this website is served over HTTPS. Open the map directly for now; once BlueMap gets an HTTPS domain, this embed will begin working automatically.</p>
-              </div>
-              <a className="btn btn-solid" href={SITE.mapUrl} target="_blank" rel="noreferrer">
-                OPEN LIVE MAP <ExternalLink size={14} />
-              </a>
-            </div>
-          </div>
-        ) : (
+        )}
+
+        {!mapUrl && (
           <div className="shell">
             <div className="map-embed-fallback">
               <MapPinned size={34} />
               <div>
-                <strong>THE PUBLIC WORLD MAP ISN'T CONNECTED YET.</strong>
-                <p>The server is still available at {SITE.serverIp}. Map and launch updates will be posted through Discord.</p>
+                <strong>The public map is currently unavailable.</strong>
+                <p>Ask the community on Discord for directions and server updates.</p>
+                <div className="hero-actions">
+                  <Link className="btn btn-solid" to="/player-guide#join">JOIN THE SERVER</Link>
+                  <a className="btn" href={SITE.discord} target="_blank" rel="noreferrer">
+                    <MessageCircle size={15} /> ASK ON DISCORD
+                  </a>
+                </div>
               </div>
-              <a className="btn" href={SITE.discord} target="_blank" rel="noreferrer">
-                <MessageCircle size={15} /> CHECK DISCORD
-              </a>
             </div>
           </div>
         )}
-      </section>
-
-      <section className="section section-tight map-notes-section">
-        <div className="shell map-notes">
-          <div><span>01</span><strong>FIND BUILDS</strong><p>See where the community is building and get your bearings without replacing survival travel.</p></div>
-          <div><span>02</span><strong>PLAN TRAVEL</strong><p>Coordinate roads, Nether routes, community areas, and long-distance projects.</p></div>
-          <div><span>03</span><strong>WATCH IT GROW</strong><p>The map becomes a visual history of what the community actually builds over time.</p></div>
-        </div>
       </section>
     </main>
   );

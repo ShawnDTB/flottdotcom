@@ -11,8 +11,6 @@
 .hero-kicker { display: flex; align-items: center; gap: 9px; margin-bottom: 30px; color: var(--muted); font: 11px "DM Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
 .live-dot { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: var(--red); box-shadow: 0 0 16px rgba(255, 59, 48, .7); }
 .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
-.server-strip { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); font: 11px "DM Mono", ui-monospace, monospace; color: var(--muted); }
-.server-strip strong { color: var(--text); overflow-wrap: anywhere; }
 
 .broadcast-card { min-width: 0; border: 1px solid var(--line); background: #101010; box-shadow: 14px 14px 0 #181818; }
 .broadcast-card-top, .broadcast-card-bottom { display: flex; justify-content: space-between; gap: 14px; align-items: center; padding: 13px 16px; font: 10px "DM Mono", ui-monospace, monospace; color: var(--muted); text-transform: uppercase; }
@@ -39,13 +37,7 @@
 .philosophy-card:nth-child(2) svg { color: var(--gold); }
 .philosophy-card:nth-child(3) svg { color: var(--lime); }
 
-.join-section { background: #121212; }
 .join-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
-.join-steps { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
-.join-steps li { display: grid; grid-template-columns: 72px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--line); }
-.join-steps li > span { color: var(--red); font: 13px "DM Mono", ui-monospace, monospace; }
-.join-steps div { display: grid; gap: 4px; }
-.join-steps small { color: var(--muted); font: 12px "DM Mono", ui-monospace, monospace; overflow-wrap: anywhere; }
 
 .ranks-preview-section { background: #090909; }
 .rank-preview-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line); }
@@ -149,7 +141,10 @@
 .community-nav { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 36px; border-top: 1px solid var(--line); padding-top: 16px; }
 .community-nav a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font: 11px "DM Mono", monospace; text-transform: uppercase; }
 .community-nav a:hover { color: var(--lime); }
-.copy-feedback { min-height: 24px; margin-top: 15px; font-size: 12px; }
+.community-join { min-width: 0; display: grid; gap: 12px; }
+.community-join-edition { display: grid; gap: 1px; border: 1px solid var(--line); background: var(--line); }
+.community-join-edition h3 { margin: 0; padding: 12px 14px; background: var(--panel); font-size: 16px; }
+.community-join .text-link { justify-self: start; }
 .footer-meta a { display: flex; align-items: center; min-height: 36px; }
 .footer-meta a:hover { color: var(--text); }
 @media (max-width: 1100px) {
